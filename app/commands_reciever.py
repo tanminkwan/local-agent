@@ -1,14 +1,15 @@
+import json
 import requests
 import threading
 from time import sleep
 from polling2 import *
-from tappender import Appender, appender
+from .executer import Executer
+        
+class CommandsReciever:
 
-class Polling:
-
-    def __init__(self, url: str, appender: Appender) -> None:
-        self.startPolling(url)
-        self.appender = appender
+    def __init__(self, url: str, executer: Executer) -> None:
+        self.executer = executer
+        self.start_polling(url)
 
     def _get_response(self, response):
         return response.status_code == 200
@@ -22,17 +23,15 @@ class Polling:
                                 poll_forever=True,
                                 check_success=self._get_response)
             except requests.exceptions.ConnectionError as e:
-                self.appender.printUrJob('result ConnectionError')
                 sleep(30)
                 continue
 
-            self.appender.printUrJob('result : ' + result.text)
+            print('result : ',type(result.text), result.text)
+            result_dict = json.loads(result.text)
+            rtn, message = self.executer.executeCommands(result_dict)
 
-    def startPolling(self, url):
+    def start_polling(self, url):
 
         thread = threading.Thread(target=self._polling, args=(url,))
         thread.name = '_polling'
         thread.start()
-
-if __name__ == '__main__':
-    Polling('http://localhost:8809', appender)
