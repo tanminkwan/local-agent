@@ -19,7 +19,7 @@ class Executer(SingletonInstane):
 
                 padapter = PrinterAdapter()
                 #rtn, msg = padapter.setAdaptee('addin.tadaptee.tadaptee.CardPrinterAdaptee')
-                adaptee_instance, rtn, msg = padapter.getAdaptee(adaptee_name)
+                adaptee_instance, rtn, msg = padapter.get_adaptee(adaptee_name)
                 print(rtn, msg)
 
                 if adaptee_instance:
