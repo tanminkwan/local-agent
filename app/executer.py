@@ -1,5 +1,5 @@
 from .common import SingletonInstane
-from .printer_adapter import PrinterFactory
+from .printer_interface import PrinterFactory
 
 class Executer(SingletonInstane):
   
