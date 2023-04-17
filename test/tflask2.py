@@ -10,8 +10,9 @@ def _getTest():
         execution_steps=[
             dict(
                 type = 'adaptee',
-                class_name = 'addin.tadaptee.tadaptee.CardPrinterAdaptee',
-                function_name = 'getPrinterStatus'
+                class_name = 'addin.adaptee.tadaptees.CardPrinterAdaptee',
+                function_name = 'get_printer_status',
+                adapter = 'addin.adapter.printer_adapters.PrinterAdapter'
             )
         ]
     )

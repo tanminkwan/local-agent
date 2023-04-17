@@ -2,18 +2,20 @@ import abc
 from importlib import import_module
 from .common import SingletonInstane
 
-class PrinterAdapteeInterface(metaclass=abc.ABCMeta):
+class DBAdapteeInterface(metaclass=abc.ABCMeta):
     @classmethod
     def __subclasshook__(cls, subclass):
-        return (hasattr(subclass, 'printImageFile') and 
-                callable(subclass.printImageFile) and 
-                hasattr(subclass, 'getPrinterStatus') and 
-                callable(subclass.getPrinterStatus) and
-                hasattr(subclass, 'getPrinterInfo') and 
-                callable(subclass.getPrinterInfo) or 
+        return (hasattr(subclass, 'get_session') and 
+                callable(subclass.get_session) and 
+                hasattr(subclass, 'execute_sql_stmt') and 
+                callable(subclass.execute_sql_stmt) and
+                hasattr(subclass, 'close_session') and 
+                callable(subclass.close_session) and
+                hasattr(subclass, 'release_instance') and 
+                callable(subclass.release_instance) or 
                 NotImplemented)
     
-class PrinterAdapter(SingletonInstane):
+class DBAdapter(SingletonInstane):
 
     def __init__(self):
         self._adaptees = []
@@ -21,7 +23,7 @@ class PrinterAdapter(SingletonInstane):
     def _in_adaptees(self, class_name):
         return False
     
-    def get_adaptee(self, class_path) -> tuple[PrinterAdapteeInterface, int, str]:
+    def get_adaptee(self, class_path) -> tuple[DBAdapteeInterface, int, str]:
 
         package_name = '.'.join(class_path.split('.')[:-1])
         class_name = class_path.split('.')[-1]
@@ -40,17 +42,18 @@ class PrinterAdapter(SingletonInstane):
 
             print("class name : ", type(classInstance).__name__)
 
-            if not isinstance(classInstance, PrinterAdapteeInterface):
-                return None, -2, "Expected object of type PrinterAdapteeInterface, got {}"\
+            if not isinstance(classInstance, DBAdapteeInterface):
+                return None, -2, "Expected object of type DBAdapteeInterface, got {}"\
                             .format(type(classInstance).__name__)
             
             self._adaptees.append(classInstance)
 
         return classInstance, 1, ""
 
-    def release_adaptee(self, classInstance: PrinterAdapteeInterface):
+    def release_adaptee(self, classInstance: DBAdapteeInterface):
         
-        if classInstance in self._adaptees:
+        if classInstance in self._adaptees: 
+            classInstance.release_instance()
             self._adaptees.remove(classInstance)
         else:
             pass
@@ -66,3 +69,4 @@ class PrinterAdapter(SingletonInstane):
 
     def getPrinterInfo(self):
         return self._classInstance.getPrinterInfo()
+    
