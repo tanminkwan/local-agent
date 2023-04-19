@@ -3,11 +3,11 @@ import requests
 import threading
 from time import sleep
 from polling2 import *
-from .executer import Executer
+from .executer import ExecuterCaller
         
 class CommandsReciever:
 
-    def __init__(self, url: str, executer: Executer) -> None:
+    def __init__(self, url: str, executer: ExecuterCaller) -> None:
         self.executer = executer
         self.start_polling(url)
 
@@ -28,7 +28,7 @@ class CommandsReciever:
 
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
-            rtn, message = self.executer.executeCommands(result_dict)
+            rtn, message = self.executer.execute_command(result_dict)
 
     def start_polling(self, url):
 

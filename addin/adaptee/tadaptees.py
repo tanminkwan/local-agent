@@ -1,7 +1,7 @@
 class CardPrinterAdaptee:
 
     def printImageFile(self, param):
-        print('CardPrinterAdaptee.printImageFile called : ',param)
+        return 'CardPrinterAdaptee.printImageFile called : ' + param
 
     def getPrinterStatus(self):
         return 'Very Good'
@@ -9,21 +9,7 @@ class CardPrinterAdaptee:
     def getPrinterInfo(self):
         return 'Smart-52 card printer'
 
-class PrinterAdaptee:
+class CreditCardPaymentAdaptee:
 
-    def printImageFile(self, param):
-        print('PrinterAdaptee.printImageFile called : ',param)
-
-    def getPrinterStatus(self):
-        return 'Very Good'
-
-    def getPrinterInfo(self):
-        return 'Normal printer'
-
-class PdfPrinterAdaptee:
-
-    def printImageFile(self, param):
-        print('PdfPrinterAdaptee.printImageFile called : ',param)
-
-    def getPrinterStatus(self):
-        return 'Very Good'
+    def approveCredit(self, card_no, payment_amount):
+        return 1, "card_no : '{}' payment_amount : {} is approved.".format(card_no, payment_amount)

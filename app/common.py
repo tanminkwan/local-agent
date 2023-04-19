@@ -1,6 +1,13 @@
 import json
 import sys
 
+def split_class_path(class_path: str) -> tuple[str, str]:
+
+    package_name = '.'.join(class_path.split('.')[:-1])
+    class_name = class_path.split('.')[-1]
+
+    return package_name, class_name
+
 def jsonFile2Dict(jsonFile: str) -> tuple[int, dict]:
 
   try:
@@ -25,7 +32,3 @@ class SingletonInstane:
     cls.__instance = cls(*args, **kargs)
     cls.instance = cls.__getInstance
     return cls.__instance
-  
-if __name__ == '__main__':
-  rtn, message = jsonFile2Dict('test.json')
-  print(rtn, message )

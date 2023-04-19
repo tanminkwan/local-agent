@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask_api import status
 from flask_restful import Resource, reqparse
-from .executer import Executer
+from .executer import ExecuterCaller
 
 class Command(Resource):
 
@@ -16,5 +16,5 @@ class Command(Resource):
     def post(self):
         data = Command.parser.parse_args()
         print(data)
-        print(Executer.instance().test())
+        print(ExecuterCaller.instance().execute_command(data))
         return dict(message='OK'), status.HTTP_200_OK

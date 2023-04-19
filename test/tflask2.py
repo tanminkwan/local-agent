@@ -7,15 +7,13 @@ CNT = 0
 
 def _getTest():
     return dict(
-        execution_steps=[
-            dict(
-                type = 'adaptee',
-                class_name = 'addin.adaptee.tadaptees.CardPrinterAdaptee',
-                function_name = 'get_printer_status',
-                adapter = 'addin.adapter.printer_adapters.PrinterAdapter'
+                command_code = '01',
+                initial_param = dict(
+                                    product_code='00011',
+                                    payment_amount=50000,
+                                    ),
+                executer = 'addin.executer.purchase_card.PurchaseCard'
             )
-        ]
-    )
 
 def run_flask_app():
     app = Flask(__name__)
