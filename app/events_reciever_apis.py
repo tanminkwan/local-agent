@@ -6,15 +6,23 @@ from .executer import ExecuterCaller
 class Command(Resource):
 
     parser = reqparse.RequestParser()
-    parser.add_argument('command_name', type=str)
-    parser.add_argument('key', type=str)
-    parser.add_argument('items', type=list, location='json')
+    parser.add_argument('command_code', type=str)
+    parser.add_argument('initial_param', type=dict)
+    parser.add_argument('executer', type=str)
+    #parser.add_argument('items', type=list, location='json')
 
     def get(self, command_name):
         return dict(command_name=command_name), status.HTTP_200_OK
 
     def post(self):
+
         data = Command.parser.parse_args()
-        print(data)
-        print(ExecuterCaller.instance().execute_command(data))
-        return dict(message='OK'), status.HTTP_200_OK
+        
+        rtn, message = ExecuterCaller.instance().execute_command(data)
+
+        if rtn:
+            status_code = status.HTTP_200_OK            
+        else:
+            status_code = status.HTTP_400_BAD_REQUEST
+
+        return dict(message=message['message']), status_code

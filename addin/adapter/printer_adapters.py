@@ -2,9 +2,8 @@ from app.adapter_interface import PrinterAdapterInterface
 
 class PrinterAdapter(PrinterAdapterInterface):
 
-    def print_image_file(self, param):
-        self._adaptee.printImageFile(param)
-        return 1, ""
+    def print_image_file(self, param):        
+        return 1, self._adaptee.printImageFile(param)
 
     def get_printer_status(self):
         return self._adaptee.getPrinterStatus()

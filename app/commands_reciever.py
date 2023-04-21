@@ -7,8 +7,11 @@ from .executer import ExecuterCaller
         
 class CommandsReciever:
 
-    def __init__(self, url: str, executer: ExecuterCaller) -> None:
-        self.executer = executer
+#    def __init__(self, url: str, executer: ExecuterCaller) -> None:
+#        self.executer = executer
+#        self.start_polling(url)
+
+    def __init__(self, url: str) -> None:
         self.start_polling(url)
 
     def _get_response(self, response):
@@ -28,7 +31,7 @@ class CommandsReciever:
 
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
-            rtn, message = self.executer.execute_command(result_dict)
+            rtn, message = ExecuterCaller.instance().execute_command(result_dict)
 
     def start_polling(self, url):
 

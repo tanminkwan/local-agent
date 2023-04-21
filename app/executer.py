@@ -31,6 +31,8 @@ class ExecuterFactory:
 
         package_name, class_name = split_class_path(class_path)
 
+        print('create_executer {} {}'.format(package_name, class_name))
+
         try:    
             
             package_module = sys.modules[package_name]\
@@ -49,8 +51,9 @@ class ExecuterFactory:
 class ExecuterCaller(SingletonInstane):
   
     def __init__(self, configure=None):
-        self.default_adapters = configure['DEFAULT_ADAPTERS']
-        self.default_adaptees = configure['DEFAULT_ADAPTEES']
+        if configure:
+            self.default_adapters = configure['DEFAULT_ADAPTERS']
+            self.default_adaptees = configure['DEFAULT_ADAPTEES']
 
     def _create_adapter(self, adapter_name: str, adaptee_name: str) -> TypeVar('T'):
 
@@ -85,10 +88,15 @@ class ExecuterCaller(SingletonInstane):
 
         for param in sig.parameters.values():
 
-            if param.name not in ['command_code', 'initial_param']:
+            if param.name not in ['db', 'initial_param']:
                 dadapter = self.default_adapters[param.annotation.__name__]
                 dadaptee = self.default_adaptees[dadapter]
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
 
-        return executer.execute_command(command_code, initial_params, **adapters)
+        from . import app, db
+
+        with app.app_context():
+            rtn, message = executer.execute_command(db, initial_params, **adapters)
+
+        return rtn, message

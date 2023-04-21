@@ -23,8 +23,11 @@ scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
 
+#executer = ExecuterCaller.instance(configure)
+#reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'], executer)
+
 executer = ExecuterCaller.instance(configure)
-reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'], executer)
+reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'])
 
 from . import models
 from addin.model import *

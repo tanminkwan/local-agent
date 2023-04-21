@@ -1,23 +1,42 @@
 from app.executer import ExecuterInterface
-from app.adapter_interface import PrinterAdapterInterface, PaymentAdapterInterface
-
+from app.adapter_interface import PrinterAdapterInterface,\
+      PaymentAdapterInterface, RESTServerAdapterInterface
+from addin.dbquery.purchase_card_queries import insert_purchase
+from flask_sqlalchemy import SQLAlchemy
 
 class PurchaseCard(ExecuterInterface):
 
     def execute_command(self, 
-                            command_code: str, 
+                            db: SQLAlchemy,
                             initial_param: dict, 
                             printer: PrinterAdapterInterface,
                             payment: PaymentAdapterInterface,
-                            ) -> tuple[int, dict]:
+                            restserver: RESTServerAdapterInterface,
+                        ) -> tuple[int, dict]:
         
-        print('command_code  : ', command_code)
         print('initial_param : ', initial_param)
-        print('printer.print_image_file : ', printer.print_image_file(initial_param['product_code']+'.jpg'))
-        print('payment.approve_credit : ', 
-              payment.approve_credit(
-                initial_param['product_code'],
-                initial_param['payment_amount'])
-            )
+
+        # 1. Print Image
+        rtn, message = printer.print_image_file(initial_param['product_code']+'.jpg')
+        print('printer.print_image_file : ', rtn, message)
+
+        # 2. Payment
+        rtn, message = payment.approve_credit(
+                            initial_param['card_no'],
+                            initial_param['payment_amount'])
         
-        return 1, {}
+        message['product_code'] = initial_param['product_code']
+
+        # 3. Db
+        insert_purchase(db, message)
+
+        # 4. Restserver 
+        restserver.post_purchase(
+                      product_code  = message['product_code'],
+                      card_no       = message['card_no'],
+                      payment_amount = message['payment_amount'],
+                      approved_no   = message['approved_no'],
+                      approved_date = message['approved_date'],
+                    )
+        
+        return 1, dict(message="Well Done!!!!")

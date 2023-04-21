@@ -1,5 +1,6 @@
 import abc
 from importlib import import_module
+from datetime import datetime
 from .common import split_class_path
 
 class AdapterFactory:
@@ -46,6 +47,18 @@ class Adapter(metaclass=abc.ABCMeta):
         self._adaptee = class_obj()
         return 1, "OK"
 
+class RESTServerAdapterInterface(Adapter):
+
+    @abc.abstractmethod
+    def post_purchase(self, 
+                      product_code: str,
+                      card_no: str, 
+                      payment_amount: int,
+                      approved_no: str,
+                      approved_date: datetime, 
+                      ) -> tuple[int, dict]:
+        raise NotImplementedError
+
 class PrinterAdapterInterface(Adapter):
 
     """
@@ -80,6 +93,6 @@ class PrinterAdapterInterface(Adapter):
 class PaymentAdapterInterface(Adapter):
 
     @abc.abstractmethod
-    def approve_credit(self, card_no: str, payment_amout: int) -> tuple[int, dict]:
+    def approve_credit(self, card_no: str, payment_amount: int) -> tuple[int, dict]:
         raise NotImplementedError
 
