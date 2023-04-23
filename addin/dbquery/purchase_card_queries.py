@@ -1,14 +1,16 @@
 from addin.model.tmodels import TPurchase
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import insert, update
+from app import db
 
-def insert_purchase(db: SQLAlchemy,  data: dict):
+#def insert_purchase(db: SQLAlchemy,  data: dict):
+def insert_purchase(data: dict):
     
     stmt = insert(TPurchase).values(data)
     db.session.execute(stmt)
     db.session.commit()
 
-def update_purchase(db: SQLAlchemy,  data: dict, condition: dict):
+def update_purchase(data: dict, condition: dict):
 
     condition_list = []
     for item in condition:
@@ -19,7 +21,3 @@ def update_purchase(db: SQLAlchemy,  data: dict, condition: dict):
     r = db.session.execute(stmt)
     print(r)
     db.session.commit()
-
-def check_day_refund(db: SQLAlchemy):
-    pass
-

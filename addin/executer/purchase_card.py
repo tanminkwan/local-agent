@@ -2,12 +2,10 @@ from app.executer import ExecuterInterface
 from app.adapter_interface import PrinterAdapterInterface,\
       PaymentAdapterInterface, RESTServerAdapterInterface
 from addin.dbquery.purchase_card_queries import insert_purchase
-from flask_sqlalchemy import SQLAlchemy
 
 class PurchaseCard(ExecuterInterface):
 
     def execute_command(self, 
-                            db: SQLAlchemy,
                             initial_param: dict, 
                             printer: PrinterAdapterInterface,
                             payment: PaymentAdapterInterface,
@@ -28,7 +26,7 @@ class PurchaseCard(ExecuterInterface):
         message['product_code'] = initial_param['product_code']
 
         # 3. Db
-        insert_purchase(db, message)
+        insert_purchase(message)
 
         # 4. Restserver 
         restserver.post_purchase(

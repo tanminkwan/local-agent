@@ -94,9 +94,9 @@ class ExecuterCaller(SingletonInstane):
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
 
-        from . import app, db
+        from . import app
 
         with app.app_context():
-            rtn, message = executer.execute_command(db, initial_params, **adapters)
+            rtn, message = executer.execute_command(initial_params, **adapters)
 
         return rtn, message

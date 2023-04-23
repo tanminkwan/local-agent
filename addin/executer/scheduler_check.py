@@ -2,34 +2,10 @@ from app.executer import ExecuterInterface
 from app.adapter_interface import PrinterAdapterInterface,\
       PaymentAdapterInterface, RESTServerAdapterInterface
 from addin.dbquery.purchase_card_queries import update_purchase
-from flask_sqlalchemy import SQLAlchemy
 
-class RefundCard(ExecuterInterface):
+class CheckRefund(ExecuterInterface):
 
-    def execute_command(self, 
-                            db: SQLAlchemy,
-                            initial_param: dict, 
-                            payment: PaymentAdapterInterface,
-                            restserver: RESTServerAdapterInterface,
+    def execute_command(self
                         ) -> tuple[int, dict]:
-        
-        print('initial_param : ', initial_param)
-
-        # 1. Refund
-        rtn, message = payment.refund_credit(
-                            initial_param['card_no'],
-                            initial_param['approved_no'])
-        
-        condition = dict(approved_no = initial_param['approved_no'])
-
-        # 3. Db
-        update_purchase(db, message, condition)
-
-        # 4. Restserver 
-        restserver.put_refund(
-                      approved_no = initial_param['approved_no'],
-                      refund_no   = message['refund_no'],
-                      refund_date = message['refund_date'],
-                    )
         
         return 1, dict(message="Well Done!!!!")
