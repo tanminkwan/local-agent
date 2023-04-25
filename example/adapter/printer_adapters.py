@@ -1,6 +1,6 @@
-from app.adapter_interface import PrinterAdapterInterface
+from miniagent.adapter import Adapter
 
-class PrinterAdapter(PrinterAdapterInterface):
+class PrinterAdapter(Adapter):
 
     def print_image_file(self, param):        
         return 1, self._adaptee.printImageFile(param)

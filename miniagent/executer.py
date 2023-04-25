@@ -5,7 +5,7 @@ import abc
 from importlib import import_module
 from typing import TypeVar
 from .common import SingletonInstane, split_class_path
-from .adapter_interface import AdapterFactory
+from .adapter import AdapterFactory
 
 class ExecuterInterface(metaclass=abc.ABCMeta):
 
@@ -56,7 +56,6 @@ class ExecuterCaller(SingletonInstane):
   
     def __init__(self, configure=None):
         if configure:
-            self.default_adapters = configure['DEFAULT_ADAPTERS']
             self.default_adaptees = configure['DEFAULT_ADAPTEES']
 
     def _create_adapter(self, adapter_name: str, adaptee_name: str) -> TypeVar('T'):
@@ -93,7 +92,7 @@ class ExecuterCaller(SingletonInstane):
         for param in sig.parameters.values():
 
             if param.name not in ['db', 'initial_param']:
-                dadapter = self.default_adapters[param.annotation.__name__]
+                dadapter = param.annotation.__module__ +'.'+param.annotation.__name__
                 dadaptee = self.default_adaptees[dadapter]
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance

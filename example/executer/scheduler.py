@@ -1,16 +1,17 @@
 from datetime import datetime
-from app.executer import ExecuterInterface
-from app.adapter_interface import PrinterAdapterInterface,\
-      PaymentAdapterInterface, RESTServerAdapterInterface
-from addin.dbquery.scheduler_check_queries import add_all_device_health
+from miniagent.executer import ExecuterInterface
+from example.adapter.payment_adapters import PaymentAdapter
+from example.adapter.printer_adapters import PrinterAdapter
+from example.adapter.restserver_adapters import RESTServerAdapter
+from example.dbquery.scheduler_check_queries import add_all_device_health
 
 class DeviceHealth(ExecuterInterface):
 
     def execute_command(self,
                             initial_param: dict,
-                            printer: PrinterAdapterInterface,
-                            payment: PaymentAdapterInterface,
-                            restserver: RESTServerAdapterInterface,
+                            printer: PrinterAdapter,
+                            payment: PaymentAdapter,
+                            restserver: RESTServerAdapter,
                         ) -> tuple[int, dict]:
         
         checked_date = datetime.now()

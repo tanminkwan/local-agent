@@ -1,14 +1,14 @@
-from app.executer import ExecuterInterface
-from app.adapter_interface import PrinterAdapterInterface,\
-      PaymentAdapterInterface, RESTServerAdapterInterface
-from addin.dbquery.purchase_card_queries import update_purchase
+from miniagent.executer import ExecuterInterface
+from example.adapter.payment_adapters import PaymentAdapter
+from example.adapter.restserver_adapters import RESTServerAdapter
+from example.dbquery.purchase_card_queries import update_purchase
 
 class RefundCard(ExecuterInterface):
 
     def execute_command(self, 
                             initial_param: dict, 
-                            payment: PaymentAdapterInterface,
-                            restserver: RESTServerAdapterInterface,
+                            payment: PaymentAdapter,
+                            restserver: RESTServerAdapter,
                         ) -> tuple[int, dict]:
         
         print('initial_param : ', initial_param)

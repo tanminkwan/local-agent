@@ -1,5 +1,5 @@
-from app import db
-from app.models import YesNoEnum
+from miniagent import db
+from miniagent.models import YesNoEnum
 from sqlalchemy import Enum
 
 class TPurchase(db.Model):

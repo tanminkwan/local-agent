@@ -1,6 +1,6 @@
-from app.adapter_interface import PaymentAdapterInterface
+from miniagent.adapter import Adapter
 
-class PaymentAdapter(PaymentAdapterInterface):
+class PaymentAdapter(Adapter):
 
     def approve_credit(self, card_no: str, payment_amount: int) -> tuple[int, dict]:
         rtn, message = self._adaptee.approveCredit(card_no, payment_amount)

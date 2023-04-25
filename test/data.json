@@ -1,1 +1,1 @@
-{"command_code":"02","initial_param":{"card_no":"1111-2222-3333-4444","product_code":"A0033","payment_amount":65000},"executer":"addin.executer.purchase_card.PurchaseCard"}
+{"command_code":"02","initial_param":{"card_no":"1111-2222-3333-4444","product_code":"A0033","payment_amount":65000},"executer":"example.executer.purchase_card.PurchaseCard"}

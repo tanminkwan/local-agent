@@ -69,10 +69,3 @@ class AppConfig(dict):
 
     def __repr__(self) -> str:
         return f"<{type(self).__name__} {dict.__repr__(self)}>"
-    
-if __name__ == '__main__':
-    import pathlib
-    conf = AppConfig(str(pathlib.Path(os.getcwd()).parent.absolute()))
-    conf.from_pyfile('config.py')
-    print(conf['COMMANDER_SERVER_URL'])
-    print(conf['XXXXX'])

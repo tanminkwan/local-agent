@@ -16,7 +16,7 @@ def _getTest(card_no, approved_no):
                                     card_no    =card_no,
                                     approved_no=approved_no,
                                     ),
-                executer = 'addin.executer.refund_card.RefundCard'
+                executer = 'example.executer.refund_card.RefundCard'
             )
 
 def run_flask_app():

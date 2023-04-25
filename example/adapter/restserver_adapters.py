@@ -1,7 +1,7 @@
 from datetime import datetime
-from app.adapter_interface import RESTServerAdapterInterface
+from miniagent.adapter import Adapter
 
-class RESTServerAdapter(RESTServerAdapterInterface):
+class RESTServerAdapter(Adapter):
 
     def post_purchase(self, 
                       product_code: str,

@@ -1,9 +1,8 @@
-from addin.model.tmodels import THealth
+from example.model.tmodels import THealth
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import insert
-from app import db
+from miniagent import db
 
-#def insert_purchase(db: SQLAlchemy,  data: dict):
 def add_all_device_health(data: list):
     
     objects = []

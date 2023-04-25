@@ -1,9 +1,8 @@
-from addin.model.tmodels import TPurchase
+from example.model.tmodels import TPurchase
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import insert, update
-from app import db
+from miniagent import db
 
-#def insert_purchase(db: SQLAlchemy,  data: dict):
 def insert_purchase(data: dict):
     
     stmt = insert(TPurchase).values(data)

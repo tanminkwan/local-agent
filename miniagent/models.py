@@ -5,7 +5,7 @@ class YesNoEnum(enum.Enum):
    YES = "YES"
    NO  = "NO"
    
-class Job(db.Model):
+class MaProperties(db.Model):
    id = db.Column(db.Integer, primary_key = True, nullable=False)
-   job_code = db.Column(db.String(100), nullable=False)
-   job_name = db.Column(db.String(200))
+   item = db.Column(db.String(100), nullable=False)
+   value = db.Column(db.String(500))

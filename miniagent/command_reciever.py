@@ -7,20 +7,29 @@ from .executer import ExecuterCaller
         
 class CommandsReciever:
 
-#    def __init__(self, url: str, executer: ExecuterCaller) -> None:
-#        self.executer = executer
-#        self.start_polling(url)
-
     def __init__(self, url: str) -> None:
-        self.lock = threading.Lock()
-        self.start_polling(url)
+        #self.interrupt_event = threading.Event()
+        #self.lock = threading.Lock()
+        self._start_polling(url)
 
+    def get_thread(self):
+        return self.thread
+    
     def _get_response(self, response):
         return response.status_code == 200
 
     def _polling(self, url):
 
         while True:
+
+            """
+            if self.interrupt_event.is_set():
+                print('[interrupted_process 1]')
+                #self.interrupted_process()
+                self.interrupt_event.clear()
+                break
+            """
+
             try:
                 result = poll(lambda: requests.get(url), 
                                 step=10, 
@@ -33,12 +42,12 @@ class CommandsReciever:
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
 
-            self.lock.locked()
+            #self.lock.locked()
             rtn, message = ExecuterCaller.instance().execute_command(result_dict)
-            self.lock.release()
+            #self.lock.release()
 
-    def start_polling(self, url):
+    def _start_polling(self, url):
 
-        thread = threading.Thread(target=self._polling, args=(url,))
-        thread.name = '_polling'
-        thread.start()
+        self.thread = threading.Thread(target=self._polling, args=(url,))
+        self.thread.name = '_polling'
+        self.thread.start()
