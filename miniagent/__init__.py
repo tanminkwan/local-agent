@@ -13,6 +13,8 @@ from .executer import ExecuterCaller
 from .command_reciever import CommandsReciever
 from .event_reciever import Command
 
+__version__ = '0.0.1'
+
 #Load configuration
 configure = AppConfig(os.getcwd())
 configure.from_pyfile('config.py')
