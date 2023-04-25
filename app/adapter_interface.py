@@ -20,12 +20,26 @@ class AdapterFactory:
         if not issubclass(class_obj, Adapter):
             return None
 
-        return class_obj()
+        class_instance = class_obj()
+        class_instance.set_adapter_name(class_path)
+
+        return class_instance
 
 class Adapter(metaclass=abc.ABCMeta):
     
     def __init__(self):
         self._adaptee = None
+        self.adapter_name = ""
+        self.adaptee_name = ""
+
+    def set_adapter_name(self, adapter_name: str):
+        self.adapter_name = adapter_name
+
+    def get_adapter_name(self):
+        return self.adapter_name
+
+    def get_adaptee_name(self):
+        return self.adaptee_name
 
     def set_adaptee(self, class_path: str):
         return self._create_adaptee(class_path)
@@ -45,6 +59,8 @@ class Adapter(metaclass=abc.ABCMeta):
             
         class_obj = getattr(package_module, class_name)
         self._adaptee = class_obj()
+        self.adaptee_name = class_path
+
         return 1, "OK"
 
 class RESTServerAdapterInterface(Adapter):
@@ -59,6 +75,10 @@ class RESTServerAdapterInterface(Adapter):
                       ) -> tuple[int, dict]:
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def get_status(self) -> int:
+        raise NotImplementedError
+
 class PrinterAdapterInterface(Adapter):
 
     """
@@ -66,8 +86,8 @@ class PrinterAdapterInterface(Adapter):
     def __subclasshook__(cls, subclass):
         return (hasattr(subclass, 'print_image_file') and 
                 callable(subclass.print_image_file) and 
-                hasattr(subclass, 'get_printer_status') and 
-                callable(subclass.get_printer_status) and
+                hasattr(subclass, 'get_status') and 
+                callable(subclass.get_status) and
                 hasattr(subclass, 'get_printer_info') and 
                 callable(subclass.get_printer_info) and
                 hasattr(subclass, 'release_printer') and 
@@ -79,7 +99,7 @@ class PrinterAdapterInterface(Adapter):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_printer_status(self) -> tuple[int, dict]:
+    def get_status(self) -> int:
         raise NotImplementedError
 
     @abc.abstractmethod
@@ -96,3 +116,10 @@ class PaymentAdapterInterface(Adapter):
     def approve_credit(self, card_no: str, payment_amount: int) -> tuple[int, dict]:
         raise NotImplementedError
 
+    @abc.abstractmethod
+    def refund_credit(self, card_no: str, approved_no: str) -> tuple[int, dict]:
+        raise NotImplementedError
+    
+    @abc.abstractmethod
+    def get_status(self) -> int:
+        raise NotImplementedError

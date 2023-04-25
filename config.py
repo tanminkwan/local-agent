@@ -1,8 +1,12 @@
 import os
+from datetime import datetime, timedelta
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 COMMANDER_SERVER_URL = 'http://localhost:8809'
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
+
+base_dir = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
+
+CUSTOM_MODELS_PATH = "addin.model"
 
 DEFAULT_ADAPTERS =\
 {
@@ -21,10 +25,15 @@ DEFAULT_ADAPTEES =\
     "addin.adaptee.tadaptees.CardPrinterAdaptee",
     "addin.adapter.payment_adapters.PaymentAdapter":
     "addin.adaptee.tadaptees.CreditCardPaymentAdaptee",
-    "addin.adapter.db_adapters.Purchase":
-    "addin.adaptee.tadaptees.Sqlite3Adaptee",
 }
 SCHEDULED_JOBS =\
-{
-    
-}
+[
+    {
+        "executer":"addin.executer.scheduler.DeviceHealth",
+        "trigger":"interval",
+        "id":"DeviceHealth",
+        "name":"Devices Health Check",
+        "minutes":5,
+        "start_date":datetime.now()+timedelta(minutes=1)
+    }
+]

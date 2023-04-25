@@ -9,7 +9,7 @@ class CardPrinterAdaptee:
         return 'CardPrinterAdaptee.printImageFile called : ' + param
 
     def getPrinterStatus(self):
-        return 'Very Good'
+        return 1
 
     def getPrinterInfo(self):
         return 'Smart-52 card printer'
@@ -48,7 +48,7 @@ class RESTServer:
                         approved_date = approved_date.isoformat()
                     )
         print('RESTServer.postPurchase post_data : ',post_data)
-        response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data))
+        response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data), timeout=10)
         return 1, response.json()
     
     def putPurchase(self,
@@ -61,5 +61,6 @@ class RESTServer:
                         refund_no   = refund_no,
                         refund_date = refund_date.isoformat()
                     )
-        response = requests.put("http://localhost:8809/purchase/"+approved_no, json=json.dumps(put_data))
+        response = requests.put("http://localhost:8809/purchase/"+approved_no, json=json.dumps(put_data), timeout=10)
         return 1, response.json()
+    

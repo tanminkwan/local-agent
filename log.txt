@@ -1,0 +1,1215 @@
+2023-04-23 15:18:21 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-23 15:18:21 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-23 15:23:30 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-23 15:23:30 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-23 15:23:35 INFO werkzeug Thread-2 (process_request_thread) : 127.0.0.1 - - [23/Apr/2023 15:23:35] "[35m[1mPOST /api/v1/command HTTP/1.1[0m" 500 -
+2023-04-23 15:26:59 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-23 15:26:59 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-23 15:27:09 INFO werkzeug Thread-2 (process_request_thread) : 127.0.0.1 - - [23/Apr/2023 15:27:09] "[35m[1mPOST /api/v1/command HTTP/1.1[0m" 500 -
+2023-04-23 15:27:40 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-23 15:27:40 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-23 15:27:44 INFO werkzeug Thread-2 (process_request_thread) : 127.0.0.1 - - [23/Apr/2023 15:27:44] "POST /api/v1/command HTTP/1.1" 200 -
+2023-04-24 10:28:26 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 10:28:26 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 11:21:49 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 11:21:49 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 11:37:50 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 11:37:50 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 12:19:23 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 12:19:23 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 13:20:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:20:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:21:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:21:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:22:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:22:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:23:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:23:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:24:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:24:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:25:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:25:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:26:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:26:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:27:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:27:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:28:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:28:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:29:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:29:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:30:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:30:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:31:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:31:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:32:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:32:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:33:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:33:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:34:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:34:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:35:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:35:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:36:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:36:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:37:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:37:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:38:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:38:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:39:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:39:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:40:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:40:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:41:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:41:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:42:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:42:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:43:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:43:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:44:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:44:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:45:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:45:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:46:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:46:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:47:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:47:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:48:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:48:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:49:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:49:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:50:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:50:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:51:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:51:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:52:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:52:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:53:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:53:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:54:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:54:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:55:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:55:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:56:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:56:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:57:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:57:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:58:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:58:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 13:59:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 13:59:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:00:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:00:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:01:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:01:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:02:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:02:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:03:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:03:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:04:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:04:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:05:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:05:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:06:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:06:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:07:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:07:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:08:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:08:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:09:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:09:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:10:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:10:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:11:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:11:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:12:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:12:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:13:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:13:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:14:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:14:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:15:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:15:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:16:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:16:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:17:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:17:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:18:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:18:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:19:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:19:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:20:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:20:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:21:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:21:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:22:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:22:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:23:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:23:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:24:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:24:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:25:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:25:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:26:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:26:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:27:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:27:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:28:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:28:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:29:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:29:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:30:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:30:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:31:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:31:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:32:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:32:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:33:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:33:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:34:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:34:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:35:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:35:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:36:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:36:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:37:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:37:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:38:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:38:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:39:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:39:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:40:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:40:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:41:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:41:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:42:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:42:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:43:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:43:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:44:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:44:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:45:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:45:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:46:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:46:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:47:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:47:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:48:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:48:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:49:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:49:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:50:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:50:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:51:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:51:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:52:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 14:52:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 14:53:08 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 14:53:08 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 14:56:15 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 14:56:15 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 14:56:30 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 14:56:30 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:04:50 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:04:50 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:05:50 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:06:50 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 79, in execute_command
+    command_code = message['command_code']
+TypeError: string indices must be integers
+2023-04-24 15:06:50 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:07:50 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 79, in execute_command
+    command_code = message['command_code']
+TypeError: string indices must be integers
+2023-04-24 15:10:39 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:10:39 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:11:39 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:12:39 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 80, in execute_command
+    command_code = message['command_code']
+TypeError: string indices must be integers
+2023-04-24 15:12:39 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:13:39 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 80, in execute_command
+    command_code = message['command_code']
+TypeError: string indices must be integers
+2023-04-24 15:13:00 ERROR apscheduler.scheduler APScheduler : Error submitting job "Heart Beat Check (trigger: cron[minute='*/1'], next run at: 2023-04-24 15:13:00 KST)" to executor "default"
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 978, in _process_jobs
+    executor.submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 71, in submit_job
+    self._do_submit_job(job, run_times)
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/pool.py", line 28, in _do_submit_job
+    f = self._pool.submit(run_job, job, job._jobstore_alias, run_times, self._logger.name)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 167, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown
+2023-04-24 15:13:02 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:13:02 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:14:29 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:14:29 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:15:29 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:16:29 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 80, in execute_command
+    command_code = message['command_code']
+TypeError: string indices must be integers
+2023-04-24 15:18:13 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:18:13 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:19:13 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:20:13 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 80, in execute_command
+    command_code = message['command_code']
+KeyError: 'command_code'
+2023-04-24 15:23:36 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:23:36 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:24:36 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:25:36 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 86, in execute_command
+    sig = inspect.signature(executer.execute_command)
+AttributeError: 'NoneType' object has no attribute 'execute_command'
+2023-04-24 15:29:29 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:29:29 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:30:29 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:31:29 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 90, in execute_command
+    sig = inspect.signature(executer.execute_command)
+AttributeError: 'NoneType' object has no attribute 'execute_command'
+2023-04-24 15:30:57 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:30:57 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:31:57 ERROR apscheduler.executors.default ThreadPoolExecutor-0_0 : Job "Heart Beat Check 2 (trigger: interval[0:01:00], next run at: 2023-04-24 15:32:57 KST)" raised an exception
+Traceback (most recent call last):
+  File "/home/hennry/.local/lib/python3.10/site-packages/apscheduler/executors/base.py", line 125, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "/home/hennry/GitHub/local-agent/app/executer.py", line 90, in execute_command
+    sig = inspect.signature(executer.execute_command)
+AttributeError: 'NoneType' object has no attribute 'execute_command'
+2023-04-24 15:44:47 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:44:47 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 15:47:36 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 15:47:36 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 16:50:41 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 16:50:41 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2023-04-24 16:53:00 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:17080
+ * Running on http://192.168.0.4:17080
+2023-04-24 16:53:00 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m

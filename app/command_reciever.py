@@ -12,6 +12,7 @@ class CommandsReciever:
 #        self.start_polling(url)
 
     def __init__(self, url: str) -> None:
+        self.lock = threading.Lock()
         self.start_polling(url)
 
     def _get_response(self, response):
@@ -31,7 +32,10 @@ class CommandsReciever:
 
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
+
+            self.lock.locked()
             rtn, message = ExecuterCaller.instance().execute_command(result_dict)
+            self.lock.release()
 
     def start_polling(self, url):
 

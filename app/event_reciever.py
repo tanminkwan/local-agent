@@ -11,12 +11,11 @@ class Command(Resource):
     parser.add_argument('executer', type=str)
     #parser.add_argument('items', type=list, location='json')
 
-    def get(self, command_name):
-        return dict(command_name=command_name), status.HTTP_200_OK
-
     def post(self):
 
         data = Command.parser.parse_args()
+
+        print('data : ',data)
         
         rtn, message = ExecuterCaller.instance().execute_command(data)
 

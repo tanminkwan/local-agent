@@ -1,9 +1,6 @@
 from app import db
-
-class TJob(db.Model):
-   id = db.Column(db.Integer, primary_key = True, nullable=False)
-   job_code = db.Column(db.String(100), nullable=False)
-   job_name = db.Column(db.String(200))
+from app.models import YesNoEnum
+from sqlalchemy import Enum
 
 class TPurchase(db.Model):
    id = db.Column(db.Integer, primary_key = True, nullable=False)
@@ -14,4 +11,10 @@ class TPurchase(db.Model):
    approved_date = db.Column(db.DateTime(), nullable=False)
    refund_no = db.Column(db.String(100))
    refund_date = db.Column(db.DateTime())
-   day_refund_yn = db.Column(db.Boolean)
+
+class THealth(db.Model):
+   id = db.Column(db.Integer, primary_key = True, nullable=False)
+   adapter_name = db.Column(db.String(300), nullable=False)
+   adaptee_name = db.Column(db.String(300))
+   is_healthy = db.Column(Enum(YesNoEnum), nullable=False)
+   checked_date = db.Column(db.DateTime(), nullable=False)

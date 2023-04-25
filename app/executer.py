@@ -33,6 +33,10 @@ class ExecuterFactory:
 
         print('create_executer {} {}'.format(package_name, class_name))
 
+        package_module = sys.modules[package_name]\
+                  if package_name in sys.modules else import_module(package_name)
+
+        """
         try:    
             
             package_module = sys.modules[package_name]\
@@ -40,12 +44,12 @@ class ExecuterFactory:
         
         except ImportError:
             return None
-
+        """
         class_obj = getattr(package_module, class_name)
 
         if not issubclass(class_obj, ExecuterInterface):
             return None
-        
+
         return class_obj()
 
 class ExecuterCaller(SingletonInstane):
@@ -76,8 +80,8 @@ class ExecuterCaller(SingletonInstane):
             "executer":"addin.executer.purchase_card.PurchaseCard",
         }
         """
-        command_code = message['command_code']
-        initial_params = message['initial_param']
+        command_code = message['command_code'] if message.get('command_code') else ''
+        initial_params = message['initial_param'] if message.get('initial_param') else {}
         executer_path = message['executer']
 
         executer = ExecuterFactory.create_executer(executer_path)
@@ -93,6 +97,8 @@ class ExecuterCaller(SingletonInstane):
                 dadaptee = self.default_adaptees[dadapter]
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
+
+        print('execute_command adapters :',adapters)
 
         from . import app
 

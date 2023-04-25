@@ -9,3 +9,6 @@ class PaymentAdapter(PaymentAdapterInterface):
     def refund_credit(self, card_no: str, approved_no: str) -> tuple[int, dict]:
         rtn, message = self._adaptee.refundCredit(card_no, approved_no)
         return rtn, message
+
+    def get_status(self) -> int:
+        return 1

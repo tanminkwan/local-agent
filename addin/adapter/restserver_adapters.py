@@ -30,3 +30,6 @@ class RESTServerAdapter(RESTServerAdapterInterface):
                         refund_no,
                         refund_date 
                         )
+    
+    def get_status(self) -> int:
+        return 1
