@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 
 COMMANDER_SERVER_URL = 'http://localhost:8809'
 
+KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
+
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
 
@@ -26,5 +28,13 @@ SCHEDULED_JOBS =\
         "name":"Devices Health Check",
         "minutes":5,
         "start_date":datetime.now()+timedelta(minutes=1)
-    }
+    },
+    {
+        "executer":"example.executer.scheduler.DeviceHealth2Kafka",
+        "trigger":"interval",
+        "id":"DeviceHealth2",
+        "name":"Devices Health Check2",
+        "minutes":2,
+        "start_date":datetime.now()+timedelta(minutes=1)
+    },
 ]

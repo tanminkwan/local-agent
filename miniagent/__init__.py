@@ -77,6 +77,9 @@ if configure.get('CUSTOM_MODELS_PATH'):
 with app.app_context():
     db.create_all()
 
+#Kafka
+app.config ['KAFKA_BOOTSTRAP_SERVERS'] = configure['KAFKA_BOOTSTRAP_SERVERS']
+
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):
     from .job_reciever import ScheduledJob

@@ -47,6 +47,7 @@ class Adapter(metaclass=abc.ABCMeta):
     def _create_adaptee(self, class_path: str):
 
         if not class_path:
+            self.adaptee_name = ""
             return 1, "No Adaptee"
         
         package_name, class_name = split_class_path(class_path)

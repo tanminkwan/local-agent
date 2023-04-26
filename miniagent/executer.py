@@ -93,7 +93,7 @@ class ExecuterCaller(SingletonInstane):
 
             if param.name not in ['db', 'initial_param']:
                 dadapter = param.annotation.__module__ +'.'+param.annotation.__name__
-                dadaptee = self.default_adaptees[dadapter]
+                dadaptee = self.default_adaptees[dadapter] if self.default_adaptees.get(dadapter) else ""
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
 
