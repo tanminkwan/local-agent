@@ -13,7 +13,7 @@ from .executer import ExecuterCaller
 from .command_reciever import CommandsReciever
 from .event_reciever import Command
 
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
