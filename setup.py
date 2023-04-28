@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='miniagent',
-    version='0.0.3',
+    version='0.0.4',
     long_description = long_description,
     long_description_content_type='text/markdown',
     description='PYPI tutorial package creation written by TeddyNote',
@@ -15,6 +15,11 @@ setup(
     url='https://github.com/tanminkwan/local-agent',
     packages=find_packages(exclude=[]),
     keywords=['flask', 'sqlalchemy', 'scheduler'],
+    entry_points={
+        'console_scripts': [
+            'mini-project = miniadmin.admin:example_code_download',
+        ],
+    },
     python_requires='>=3.9',
     package_data={},
     zip_safe=False,

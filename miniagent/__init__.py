@@ -14,7 +14,7 @@ from .command_reciever import CommandsReciever
 from .event_reciever import Command
 from .message_reciever import MessageReciever
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
