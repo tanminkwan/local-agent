@@ -1,6 +1,6 @@
 from kafka import KafkaProducer
 import json
-from miniagent import app
+from miniagent import configure
 from miniagent.adapter import Adapter
 from miniagent.common import SingletonInstane
 
@@ -8,7 +8,7 @@ from miniagent.common import SingletonInstane
 class KafkaProducerAdapter(Adapter):
 
     def __init__(self):
-        self.producer = KafkaProducer(bootstrap_servers=app.config['KAFKA_BOOTSTRAP_SERVERS'])
+        self.producer = KafkaProducer(bootstrap_servers=configure['KAFKA_BOOTSTRAP_SERVERS'])
 
     def produce_message(self, topic: str, message: dict) -> tuple[int, dict]:
         self.producer.send(topic,json.dumps(message).encode('utf-8'))

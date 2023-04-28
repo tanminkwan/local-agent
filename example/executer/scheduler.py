@@ -4,7 +4,7 @@ from example.adapter.payment_adapters import PaymentAdapter
 from example.adapter.printer_adapters import PrinterAdapter
 from example.adapter.restserver_adapters import RESTServerAdapter
 from example.adapter.kafka_producer_adapters import KafkaProducerAdapter
-from example.dbquery .scheduler_check_queries import add_all_device_health
+from example.dbquery.scheduler_check_queries import add_all_device_health
 
 class DeviceHealth(ExecuterInterface):
 

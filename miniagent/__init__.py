@@ -12,6 +12,7 @@ from .app_config import AppConfig
 from .executer import ExecuterCaller
 from .command_reciever import CommandsReciever
 from .event_reciever import Command
+from .message_reciever import MessageReciever
 
 __version__ = '0.0.3'
 
@@ -78,7 +79,13 @@ with app.app_context():
     db.create_all()
 
 #Kafka
-app.config ['KAFKA_BOOTSTRAP_SERVERS'] = configure['KAFKA_BOOTSTRAP_SERVERS']
+message_reciever = None
+if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVERS'):
+    message_reciever = MessageReciever(
+        group_id = configure['AGENT_NAME'],
+        executers_by_topic = configure['EXECUTERS_BY_TOPIC']
+    )
+
 
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):

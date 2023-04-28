@@ -1,14 +1,24 @@
 import os
 from datetime import datetime, timedelta
 
-COMMANDER_SERVER_URL = 'http://localhost:8809'
+AGENT_NAME = 'BLUE_SKULL_NO13'
 
-KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
+COMMANDER_SERVER_URL = 'http://localhost:8809'
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
 
 CUSTOM_MODELS_PATH = "example.model"
+
+KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
+
+EXECUTERS_BY_TOPIC =\
+{
+    "TEST_TOPIC":
+    "example.executer.say_hello.PrintParam",
+    "TEST2_TOPIC":
+    "example.executer.say_hello.PrintParam",
+}
 
 DEFAULT_ADAPTEES =\
 {
