@@ -8,7 +8,7 @@ setup(
     version='0.0.4',
     long_description = long_description,
     long_description_content_type='text/markdown',
-    description='PYPI tutorial package creation written by TeddyNote',
+    description='Multi-adaptable and lightweight application framework based on Flask',
     author='tanminkwan',
     author_email='tanminkwan@gmail.com',
     license= 'MIT',

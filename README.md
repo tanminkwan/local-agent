@@ -7,6 +7,28 @@ Miniagent is a multi-adaptable and lightweight application framework based on **
 Install and update using **pip**:
 `$ pip install -U miniagent`
 
+## Example code download
+
+Create an example project after installing miniagent
+
+`$ mini-project tanminkwan/local-agent test_project`
+
+Then test_project directory and files are created like the tree below.
+```
+└── test_project
+    ├── run.py
+    ├── config.py
+    └── myapp
+        ├── __init__.py
+        ├── adaptee.py
+        ├── adapter.py
+        ├── dbquery.py
+        ├── executer.py
+        └── model
+            ├── __init__.py
+            └── mymodels.py
+```
+
 ## A Simple Example
 
 There must be two files config.py and run.py in the base directory.

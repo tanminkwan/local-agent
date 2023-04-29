@@ -64,9 +64,9 @@ scheduler.start()
 executer = ExecuterCaller.instance(configure)
 
 #Command Reciever (Web url polling)
-reciever = None
+command_reciever = None
 if configure.get('COMMANDER_SERVER_URL'):
-    reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'])
+    command_reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'])
 
 #Table creation
 from . import models
