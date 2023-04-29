@@ -1,6 +1,6 @@
 # Miniagent
 
-Miniagent is a multi-adaptable and lightweight application framework based on **Flask**.
+Miniagent is a multi-adaptable and lightweight server framework based on **Flask**.
 
 ## Installing
 
