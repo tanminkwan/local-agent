@@ -16,7 +16,8 @@ class KafkaProducerAdapter(Adapter):
     
     def __del__(self):
         print('del KafkaProducerAdapter')
-        self.producer.close()
+        if self.producer:
+            self.producer.close()
 
     def get_status(self) -> int:
         return 1

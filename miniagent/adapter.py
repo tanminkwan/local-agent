@@ -21,6 +21,7 @@ class AdapterFactory:
             return None
 
         class_instance = class_obj()
+
         class_instance.set_adapter_name(class_path)
 
         return class_instance

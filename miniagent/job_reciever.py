@@ -4,8 +4,9 @@ from .executer import ExecuterCaller
 
 class ScheduledJob:
 
-    def __init__(self, jobs: list) -> None:
+    def __init__(self, caller: ExecuterCaller, jobs: list) -> None:
 
+        self.caller = caller
         for job in jobs:
             self._run_job(job)
 
@@ -13,7 +14,7 @@ class ScheduledJob:
 
         executer = job.pop('executer')
         scheduler.add_job(
-            func=ExecuterCaller.instance().execute_command,
+            func=self.caller.execute_command,
             args=[{'executer':executer}],
             **job
         )        

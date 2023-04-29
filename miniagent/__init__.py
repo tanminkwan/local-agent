@@ -90,4 +90,4 @@ if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVER
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):
     from .job_reciever import ScheduledJob
-    ScheduledJob(configure['SCHEDULED_JOBS'])
+    ScheduledJob(executer, configure['SCHEDULED_JOBS'])
