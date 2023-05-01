@@ -8,8 +8,9 @@ from .executer import ExecuterCaller
         
 class MessageReciever:
 
-    def __init__(self, group_id: str, executers_by_topic: dict) -> None:
+    def __init__(self, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
 
+        self.event = event
         self.consumer = None
         try:
             self.consumer = KafkaConsumer(
@@ -38,10 +39,14 @@ class MessageReciever:
 
         while True:
 
+            if self.event.is_set():
+                print('[MessageReciever is broken]')
+                break
+
             try:
                 results = self.consumer.poll(10.0)
             except Exception as e:
-                sleep(20)
+                sleep(10)
                 continue
 
             if not results:
@@ -59,6 +64,7 @@ class MessageReciever:
         self.thread = threading.Thread(target=self._polling)
         self.thread.name = '_kafka_consumer'
         self.thread.start()
+        #self.thread.join()
 
     def parse_message(self, topic: str, message: dict):
         
@@ -71,4 +77,6 @@ class MessageReciever:
         return result_dict
     
     def __del__(self):
-        self.consumer.close()
+        #if self.consumer:
+        #    self.consumer.close()
+        pass

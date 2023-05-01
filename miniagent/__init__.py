@@ -1,4 +1,8 @@
 import os
+import sys
+import signal
+import threading
+from time import sleep
 from importlib import import_module
 from flask import Flask
 from flask_cors import CORS
@@ -14,7 +18,7 @@ from .command_reciever import CommandsReciever
 from .event_reciever import Command
 from .message_reciever import MessageReciever
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -63,10 +67,22 @@ scheduler.start()
 #Executer
 executer = ExecuterCaller.instance(configure)
 
+#Interept Event
+stop_event = threading.Event()
+
+def signal_handler(sig, frame):
+    global stop_event
+    stop_event.set()
+    sys.stderr.write("KeyboardInterrupt received, stopping...\n")
+    sleep(5)
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 #Command Reciever (Web url polling)
 command_reciever = None
 if configure.get('COMMANDER_SERVER_URL'):
-    command_reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'])
+    command_reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'], stop_event)
 
 #Table creation
 from . import models
@@ -83,9 +99,9 @@ message_reciever = None
 if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVERS'):
     message_reciever = MessageReciever(
         group_id = configure['AGENT_NAME'],
-        executers_by_topic = configure['EXECUTERS_BY_TOPIC']
+        executers_by_topic = configure['EXECUTERS_BY_TOPIC'],
+        event = stop_event
     )
-
 
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):

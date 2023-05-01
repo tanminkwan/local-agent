@@ -7,9 +7,8 @@ from .executer import ExecuterCaller
         
 class CommandsReciever:
 
-    def __init__(self, url: str) -> None:
-        #self.interrupt_event = threading.Event()
-        #self.lock = threading.Lock()
+    def __init__(self, url: str, event: threading.Event) -> None:
+        self.event = event
         self._start_polling(url)
 
     def get_thread(self):
@@ -22,13 +21,9 @@ class CommandsReciever:
 
         while True:
 
-            """
-            if self.interrupt_event.is_set():
-                print('[interrupted_process 1]')
-                #self.interrupted_process()
-                self.interrupt_event.clear()
+            if self.event.is_set():
+                print('[CommandsReciever is broken]')
                 break
-            """
 
             try:
                 result = poll(lambda: requests.get(url), 
@@ -36,7 +31,7 @@ class CommandsReciever:
                                 poll_forever=True,
                                 check_success=self._get_response)
             except requests.exceptions.ConnectionError as e:
-                sleep(30)
+                sleep(10)
                 continue
 
             print('result : ',type(result.text), result.text)
@@ -51,3 +46,4 @@ class CommandsReciever:
         self.thread = threading.Thread(target=self._polling, args=(url,))
         self.thread.name = '_polling'
         self.thread.start()
+        #self.thread.join()
