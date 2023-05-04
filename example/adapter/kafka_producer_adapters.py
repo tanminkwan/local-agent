@@ -7,6 +7,8 @@ from miniagent.common import SingletonInstane
 
 class KafkaProducerAdapter(Adapter):
 
+    producer = None
+
     def __init__(self):
         self.producer = KafkaProducer(bootstrap_servers=configure['KAFKA_BOOTSTRAP_SERVERS'])
 

@@ -48,7 +48,10 @@ class RESTServer:
                         approved_date = approved_date.isoformat()
                     )
         print('RESTServer.postPurchase post_data : ',post_data)
-        response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data), timeout=10)
+        try:
+            response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data), timeout=10)
+        except ConnectionError as e:
+            return -1, {"message":"ConnectionError to http://localhost:8809/purchase"}
         return 1, response.json()
     
     def putPurchase(self,

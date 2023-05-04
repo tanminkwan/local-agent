@@ -10,10 +10,15 @@ class AdapterFactory:
 
         package_name, class_name = split_class_path(class_path)
 
+        if package_name is None:
+            raise RuntimeError("[{}] doesn't include the package"
+                               " name of the class.",format(class_path))
+
         try:    
             package_module = import_module(package_name)
         except ImportError:
-            return None
+            raise RuntimeError("Package [{}] of class [{}] isn't able to be imported."\
+                            .format(package_name, class_path))
 
         class_obj = getattr(package_module, class_name)
         
@@ -44,11 +49,19 @@ class Adapter(metaclass=abc.ABCMeta):
 
     def set_adaptee(self, class_path: str):
         return self._create_adaptee(class_path)
+    
+    def get_adaptee(self):
+        if self._adaptee is None:
+            raise RuntimeError("Adapter [{}] has no adaptee."\
+                               .format(self.adapter_name))
+        else:
+            return self._adaptee
 
     def _create_adaptee(self, class_path: str):
 
         if not class_path:
             self.adaptee_name = ""
+            self._adaptee = None
             return 1, "No Adaptee"
         
         package_name, class_name = split_class_path(class_path)
@@ -56,11 +69,12 @@ class Adapter(metaclass=abc.ABCMeta):
         try:
             package_module = import_module(package_name)
         except ImportError:
-            return -1, "'{}' is not imported.".format(package_name)
+            raise RuntimeError("Package [{}] of class [{}] isn't able to be imported."\
+                            .format(package_name, class_path))
             
         if not hasattr(package_module, class_name):
-            return -2, "module '{}' has no attribute '{}'"\
-                            .format(package_name, class_name)
+            raise RuntimeError("Package [{}] has no attribute [{}]."\
+                            .format(package_name, class_name))
             
         class_obj = getattr(package_module, class_name)
         self._adaptee = class_obj()
