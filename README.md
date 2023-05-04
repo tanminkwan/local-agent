@@ -5,7 +5,30 @@ Miniagent is a multi-adaptable and lightweight server framework based on **Flask
 ## Installing
 
 Install and update using **pip**:
-`$ pip install -U miniagent`
+```
+$ pip install -U miniagent
+```
+
+## Advised Virtual Environment Install
+
+Virtual env is highly advisable because the more projects you have, the more likely it is that you will be working with different versions of Python itself, or at least different versions of Python libraries.
+
+```
+$ pip install virtualenv
+```
+Next create a virtualenv:
+```
+$ virtualenv venv
+New python executable in venv/bin/python
+Installing distribute............done.
+$ . venv/bin/activate
+(venv)$
+```
+Now install miniagent on the virtual env, it will install all the dependencies and these will be isolated from your system’s python packages
+
+```
+(venv)$ pip install miniagent
+```
 
 ## Example code download
 
@@ -42,19 +65,19 @@ COMMANDER_SERVER_URL = 'http://localhost:8809'
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
 
-CUSTOM_MODELS_PATH = "example.model"
+CUSTOM_MODELS_PATH = "myapp.model"
 
 DEFAULT_ADAPTEES =\
 {
-    "example.adapter.printer_adapters.PrinterAdapter":
-    "example.adaptee.tadaptees.CardPrinterAdaptee",
-    "example.adapter.payment_adapters.PaymentAdapter":
-    "example.adaptee.tadaptees.CreditCardPaymentAdaptee",
+    "myapp.adapter.printer_adapters.PrinterAdapter":
+    "myapp.adaptee.tadaptees.CardPrinterAdaptee",
+    "myapp.adapter.payment_adapters.PaymentAdapter":
+    "myapp.adaptee.tadaptees.CreditCardPaymentAdaptee",
 }
 SCHEDULED_JOBS =\
 [
     {
-        "executer":"example.executer.scheduler.DeviceHealth",
+        "executer":"myapp.executer.scheduler.DeviceHealth",
         "trigger":"interval",
         "id":"DeviceHealth",
         "name":"Devices Health Check",
