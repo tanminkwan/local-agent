@@ -11,8 +11,7 @@ class AdapterFactory:
         package_name, class_name = split_class_path(class_path)
 
         if package_name is None:
-            raise RuntimeError("[{}] doesn't include the package"
-                               " name of the class.",format(class_path))
+            raise RuntimeError("There is no package name in [{}].",format(class_path))
 
         try:    
             package_module = import_module(package_name)
@@ -65,6 +64,9 @@ class Adapter(metaclass=abc.ABCMeta):
             return 1, "No Adaptee"
         
         package_name, class_name = split_class_path(class_path)
+
+        if package_name is None:
+            raise RuntimeError("There is no package name in [{}].",format(class_path))
 
         try:
             package_module = import_module(package_name)
