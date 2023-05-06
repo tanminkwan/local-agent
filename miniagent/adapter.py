@@ -1,28 +1,19 @@
 import abc
 from importlib import import_module
 from datetime import datetime
-from .common import split_class_path
+from .common import split_class_path, get_class_object
 
 class AdapterFactory:
 
     @staticmethod
     def create_adapter(class_path: str):
 
-        package_name, class_name = split_class_path(class_path)
+        class_obj = get_class_object(class_path)
 
-        if package_name is None:
-            raise RuntimeError("There is no package name in [{}].",format(class_path))
-
-        try:    
-            package_module = import_module(package_name)
-        except ImportError:
-            raise RuntimeError("Package [{}] of class [{}] isn't able to be imported."\
-                            .format(package_name, class_path))
-
-        class_obj = getattr(package_module, class_name)
-        
         if not issubclass(class_obj, Adapter):
-            return None
+            raise RuntimeError("Class [{}] must be a subclass of"
+                               " miniagent.adapter.Adapter"\
+                            .format(class_obj.__name__))
 
         class_instance = class_obj()
 
@@ -63,22 +54,8 @@ class Adapter(metaclass=abc.ABCMeta):
             self._adaptee = None
             return 1, "No Adaptee"
         
-        package_name, class_name = split_class_path(class_path)
+        class_obj = get_class_object(class_path)
 
-        if package_name is None:
-            raise RuntimeError("There is no package name in [{}].",format(class_path))
-
-        try:
-            package_module = import_module(package_name)
-        except ImportError:
-            raise RuntimeError("Package [{}] of class [{}] isn't able to be imported."\
-                            .format(package_name, class_path))
-            
-        if not hasattr(package_module, class_name):
-            raise RuntimeError("Package [{}] has no attribute [{}]."\
-                            .format(package_name, class_name))
-            
-        class_obj = getattr(package_module, class_name)
         self._adaptee = class_obj()
         self.adaptee_name = class_path
 

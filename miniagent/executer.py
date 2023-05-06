@@ -4,7 +4,7 @@ import types
 import abc
 from importlib import import_module
 from typing import TypeVar
-from .common import SingletonInstane, split_class_path
+from .common import SingletonInstane, get_class_object
 from .adapter import AdapterFactory
 
 class ExecuterInterface(metaclass=abc.ABCMeta):
@@ -29,34 +29,22 @@ class ExecuterFactory:
     @staticmethod
     def create_executer(class_path: str):
 
-        package_name, class_name = split_class_path(class_path)
-
-        print('create_executer {} {}'.format(package_name, class_name))
-
-        package_module = sys.modules[package_name]\
-                  if package_name in sys.modules else import_module(package_name)
-
-        """
-        try:    
-            
-            package_module = sys.modules[package_name]\
-                  if package_name in sys.modules else import_module(package_name)
-        
-        except ImportError:
-            return None
-        """
-        class_obj = getattr(package_module, class_name)
+        class_obj = get_class_object(class_path)
 
         if not issubclass(class_obj, ExecuterInterface):
-            return None
+            raise RuntimeError("Class [{}] must be a subclass of"
+                               " miniagent.executer.ExecuterInterface"\
+                            .format(class_obj.__name__))
 
         return class_obj()
 
 class ExecuterCaller(SingletonInstane):
   
     def __init__(self, configure=None):
-        if configure:
+        if configure and configure.get('DEFAULT_ADAPTEES'):
             self.default_adaptees = configure['DEFAULT_ADAPTEES']
+        else:
+            self.default_adaptees = {}
 
     def _create_adapter(self, adapter_name: str, adaptee_name: str) -> TypeVar('T'):
 
@@ -79,7 +67,7 @@ class ExecuterCaller(SingletonInstane):
             "executer":"addin.executer.purchase_card.PurchaseCard",
         }
         """
-        command_code = message['command_code'] if message.get('command_code') else ''
+        #command_code = message['command_code'] if message.get('command_code') else ''
         initial_params = message['initial_param'] if message.get('initial_param') else {}
         executer_path = message['executer']
 
@@ -101,7 +89,7 @@ class ExecuterCaller(SingletonInstane):
                 
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
-
+        print('executer_path : ',executer_path)
         print('execute_command adapters :',adapters)
 
         from . import app
