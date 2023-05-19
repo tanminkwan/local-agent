@@ -53,25 +53,47 @@ class MessageReciever:
                 sleep(5)
             
             for topic_partition, messages in results.items():
-                print('kafka message : ',type(messages), messages)
                 for message in messages:
                     result_dict = self.parse_message(topic_partition.topic, message.value)
 
-                    rtn, comment = ExecuterCaller.instance().execute_command(result_dict)
+                    from . import app, zipkin
+                    with app.app_context():
+
+                        if zipkin:
+
+                            header = result_dict['header']
+                            trace_id = header.get('trace_id')
+                            parent_span_id = header.get('span_id')
+
+                            zipkin.create_span('KafkaConsumer.topic='+ topic_partition.topic,
+                                               trace_id = trace_id,
+                                               parent_span_id = parent_span_id,
+                                               )
+                            zipkin.update_tags(param=message.value)
+
+                        rtn, comment = ExecuterCaller.instance().execute_command(result_dict)
+
+                        if zipkin:
+                            zipkin.update_tags(
+                                param  = message.value,
+                                result = comment,
+                                )
 
     def _start_polling(self):
 
         self.thread = threading.Thread(target=self._polling)
         self.thread.name = '_kafka_consumer'
         self.thread.start()
-        #self.thread.join()
 
     def parse_message(self, topic: str, message: dict):
         
+        header = message.pop('header') if message.get('header') else {}
+
         result_dict =\
             dict(
                 executer = self.executers[topic],
-                initial_param = message
+                initial_param = message,
+                header = header
             )
         
         return result_dict
@@ -79,4 +101,7 @@ class MessageReciever:
     def __del__(self):
         #if self.consumer:
         #    self.consumer.close()
-        pass
+        try:
+            self.consumer.close()
+        except Exception as e:
+            pass

@@ -2,6 +2,7 @@ import requests
 import uuid
 import json
 from datetime import datetime
+from miniagent.flask_zipkin import child_zipkin_span
 
 class CardPrinterAdaptee:
 
@@ -47,11 +48,18 @@ class RESTServer:
                         approved_no   = approved_no,
                         approved_date = approved_date.isoformat()
                     )
-        print('RESTServer.postPurchase post_data : ',post_data)
+
         try:
-            response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data), timeout=10)
+
+            with child_zipkin_span('postPurchase') as span:
+                headers = {}
+                headers.update(span.create_http_headers_for_new_span())
+                response = requests.post("http://localhost:8809/purchase", json=json.dumps(post_data), headers=headers, timeout=10)
+                span.update_tags(url=response.url, data=post_data)
+
         except ConnectionError as e:
             return -1, {"message":"ConnectionError to http://localhost:8809/purchase"}
+
         return 1, response.json()
     
     def putPurchase(self,

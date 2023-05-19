@@ -16,8 +16,9 @@ from .executer import ExecuterCaller
 from .command_reciever import CommandsReciever
 from .event_reciever import Command
 from .message_reciever import MessageReciever
+from .flask_zipkin import Zipkin
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -40,10 +41,18 @@ logging.basicConfig(handlers=[fileHandler])
 """
 
 #Get flask handle
-app = Flask(__name__)
+app_name = configure['AGENT_NAME'] \
+    if configure.get('AGENT_NAME') else __name__
+app = Flask(app_name)
 
 #enable CORS for all routes 
 CORS(app)
+
+# zipkin
+zipkin = None
+if configure.get('ZIPKIN_ADDRESS'):
+    zipkin = Zipkin(app, sample_rate=100)
+    app.config['ZIPKIN_ADDRESS']=configure['ZIPKIN_ADDRESS']
 
 #REST API
 api = Api(app, prefix="/api/v1")

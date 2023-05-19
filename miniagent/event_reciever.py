@@ -15,8 +15,6 @@ class Command(Resource):
 
         data = Command.parser.parse_args()
 
-        print('data : ',data)
-        
         rtn, message = ExecuterCaller.instance().execute_command(data)
 
         if rtn:

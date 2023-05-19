@@ -22,7 +22,6 @@ class CommandsReciever:
         while True:
 
             if self.event.is_set():
-                print('[CommandsReciever is broken]')
                 break
 
             try:
@@ -34,12 +33,31 @@ class CommandsReciever:
                 sleep(10)
                 continue
 
+            
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
 
-            #self.lock.locked()
-            rtn, message = ExecuterCaller.instance().execute_command(result_dict)
-            #self.lock.release()
+            from . import app, zipkin
+            with app.app_context():
+
+                if zipkin:
+
+                    header = result.headers
+                    trace_id = header.get('x-b3-traceid')
+                    parent_span_id = header.get('x-b3-spanid')
+
+                    zipkin.create_span('CommandsReciever.url='+ url,
+                                        trace_id = trace_id,
+                                        parent_span_id = parent_span_id,
+                                      )
+                    
+                rtn, comment = ExecuterCaller.instance().execute_command(result_dict)
+
+                if zipkin:
+                    zipkin.update_tags(
+                        param  = result_dict,
+                        result = comment,
+                        )
 
     def _start_polling(self, url):
 

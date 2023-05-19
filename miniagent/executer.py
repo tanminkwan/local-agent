@@ -58,8 +58,8 @@ class ExecuterCaller(SingletonInstane):
 
     def execute_command(self, message: dict) -> dict:
         """
+        sample message :
         {
-            "command_code":"01",
             "initial_param":{
                 "product_code":"00011",
                 "payment_amount":50000,
@@ -67,7 +67,6 @@ class ExecuterCaller(SingletonInstane):
             "executer":"addin.executer.purchase_card.PurchaseCard",
         }
         """
-        #command_code = message['command_code'] if message.get('command_code') else ''
         initial_params = message['initial_param'] if message.get('initial_param') else {}
         executer_path = message['executer']
 
@@ -89,12 +88,11 @@ class ExecuterCaller(SingletonInstane):
                 
                 adapter_instance = self._create_adapter(dadapter, dadaptee)
                 adapters[param.name] = adapter_instance
-        print('executer_path : ',executer_path)
-        print('execute_command adapters :',adapters)
 
-        from . import app
+        #from . import app
 
-        with app.app_context():
-            rtn, message = executer.execute_command(initial_params, **adapters)
+        #with app.app_context():
+        #    rtn, message = executer.execute_command(initial_params, **adapters)
+        rtn, message = executer.execute_command(initial_params, **adapters)
 
         return rtn, message

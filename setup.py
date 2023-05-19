@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='miniagent',
-    version='0.0.6',
+    version='0.0.7',
     long_description = long_description,
     long_description_content_type='text/markdown',
     description='Multi-adaptable and lightweight server framework based on Flask',
@@ -14,7 +14,7 @@ setup(
     license= 'MIT',
     url='https://github.com/tanminkwan/local-agent',
     packages=find_packages(exclude=[]),
-    keywords=['flask', 'sqlalchemy', 'scheduler'],
+    keywords=['flask', 'sqlalchemy', 'scheduler', 'zipkin', 'kafka'],
     entry_points={
         'console_scripts': [
             'mini-project = miniadmin.admin:example_code_download',
@@ -59,5 +59,6 @@ setup(
         'urllib3>=1.26.15',
         'Werkzeug>=2.3.2',
         'PyGithub>=1.58.1',
+        'py-zipkin>=1.2.8',
     ]
 )

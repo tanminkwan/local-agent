@@ -18,5 +18,4 @@ def update_purchase(data: dict, condition: dict):
     
     stmt = update(TPurchase).where(*condition_list).values(data)
     r = db.session.execute(stmt)
-    print(r)
     db.session.commit()

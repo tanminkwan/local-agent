@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 
 AGENT_NAME = 'BLUE_SKULL_NO13'
 
+ZIPKIN_ADDRESS = ('localhost',9411)
+
 COMMANDER_SERVER_URL = 'http://localhost:8809'
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -29,6 +31,8 @@ DEFAULT_ADAPTEES =\
     "example.adapter.payment_adapters.PaymentAdapter":
     "example.adaptee.tadaptees.CreditCardPaymentAdaptee",
 }
+"""
+
 SCHEDULED_JOBS =\
 [
     {
@@ -36,15 +40,17 @@ SCHEDULED_JOBS =\
         "trigger":"interval",
         "id":"DeviceHealth",
         "name":"Devices Health Check",
-        "minutes":5,
+        "minutes":20,
         "start_date":datetime.now()+timedelta(minutes=1)
-    },
+    }
+]
+
     {
         "executer":"example.executer.scheduler.DeviceHealth2Kafka",
         "trigger":"interval",
         "id":"DeviceHealth2",
         "name":"Devices Health Check2",
-        "minutes":2,
+        "minutes":30,
         "start_date":datetime.now()+timedelta(minutes=1)
     },
-]
+"""

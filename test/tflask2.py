@@ -6,8 +6,8 @@ from flask_api import status
 
 global CNT, CARD_NO, APPROVED_NO
 CNT = 0
-CARD_NO = ""
-APPROVED_NO = ""
+CARD_NO = "1111-2222-3333-4444"
+APPROVED_NO = "68c076cfd98843328c4a794cd6994264"
 
 def _getTest(card_no, approved_no):
     return dict(
@@ -22,6 +22,11 @@ def _getTest(card_no, approved_no):
 def run_flask_app():
 
     app = Flask(__name__)
+
+    @app.after_request
+    def add_header(response):
+        response.headers['x-b3-traceid'] = '00000aaaaaaaaaaa'
+        return response
 
     @app.get('/')
     def hello():
@@ -42,6 +47,7 @@ def run_flask_app():
     @app.post('/purchase/')
     def post_purchase():
 
+        print('post_purchase header : ',request.headers)
         params = json.loads(json.loads(request.get_data()))
         global CARD_NO
         global APPROVED_NO
