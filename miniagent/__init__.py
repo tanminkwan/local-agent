@@ -9,8 +9,8 @@ from flask_cors import CORS
 from flask_restful import Api
 from flask_apscheduler import APScheduler
 from flask_sqlalchemy import SQLAlchemy
-import logging
-import logging.handlers
+#import logging
+#import logging.handlers
 from .app_config import AppConfig
 from .executer import ExecuterCaller
 from .command_reciever import CommandsReciever
@@ -58,6 +58,9 @@ if configure.get('ZIPKIN_ADDRESS'):
 api = Api(app, prefix="/api/v1")
 api.add_resource(Command, '/command')
 
+if configure.get('CUSTOM_APIS_PATH'):
+    import_module(configure['CUSTOM_APIS_PATH'])
+
 #local database
 if not configure.get('SQLALCHEMY_DATABASE_URI'):
     base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -93,7 +96,9 @@ if configure.get('COMMANDER_SERVER_URL'):
     command_reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'], stop_event)
 
 #Table creation
+# 1. miniagent tables
 from . import models
+# 2. custom tables
 if configure.get('CUSTOM_MODELS_PATH'):
     mdl = import_module(configure['CUSTOM_MODELS_PATH'])
     cls_objs = [x for x in mdl.__dict__ if not x.startswith("_")]

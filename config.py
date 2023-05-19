@@ -12,6 +12,8 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
 
 CUSTOM_MODELS_PATH = "example.model"
 
+CUSTOM_APIS_PATH = "example.api"
+
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
 
 EXECUTERS_BY_TOPIC =\
