@@ -60,12 +60,26 @@ There must be two files config.py and run.py in the base directory.
 import os
 from datetime import datetime, timedelta
 
+AGENT_NAME = 'BLUE_SKULL_NO13'
+
+ZIPKIN_ADDRESS = ('localhost',9411)
+
 COMMANDER_SERVER_URL = 'http://localhost:8809'
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
 
 CUSTOM_MODELS_PATH = "myapp.model"
+
+KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
+
+EXECUTERS_BY_TOPIC =\
+{
+    "TEST_TOPIC":
+    "example.executer.say_hello.PrintParam",
+    "TEST2_TOPIC":
+    "example.executer.say_hello.PrintParam",
+}
 
 DEFAULT_ADAPTEES =\
 {
