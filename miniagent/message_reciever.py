@@ -65,7 +65,7 @@ class MessageReciever:
                             trace_id = header.get('trace_id')
                             parent_span_id = header.get('span_id')
 
-                            zipkin.create_span('KafkaConsumer.topic='+ topic_partition.topic,
+                            zipkin.create_span('Kafka_consumer.topic='+ topic_partition.topic,
                                                trace_id = trace_id,
                                                parent_span_id = parent_span_id,
                                                )

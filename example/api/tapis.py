@@ -7,3 +7,4 @@ class TestAPI(Resource):
         return {'result': 'Hello '+str(id)}
 
 api.add_resource(TestAPI, '/test/<int:id>', endpoint='test')
+

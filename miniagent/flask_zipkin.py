@@ -215,7 +215,7 @@ class Zipkin(object):
 
         span = hennry_zipkin_span(
             service_name=self.app.name,
-            span_name='{0}.{1}'.format(request.endpoint, request.method),
+            span_name='rest.{0}.{1}'.format(request.endpoint, request.method),
             transport_handler=self._transport_handler,
             sample_rate=self._sample_rate,
             zipkin_attrs=self._zipkin_attrs

@@ -4,7 +4,8 @@ import threading
 from time import sleep
 from polling2 import *
 from .executer import ExecuterCaller
-        
+from .common import get_callable_object
+
 class CommandsReciever:
 
     def __init__(self, url: str, event: threading.Event) -> None:
@@ -37,7 +38,7 @@ class CommandsReciever:
             print('result : ',type(result.text), result.text)
             result_dict = json.loads(result.text)
 
-            from . import app, zipkin
+            from . import app, zipkin, configure
             with app.app_context():
 
                 if zipkin:
@@ -46,12 +47,17 @@ class CommandsReciever:
                     trace_id = header.get('x-b3-traceid')
                     parent_span_id = header.get('x-b3-spanid')
 
-                    zipkin.create_span('CommandsReciever.url='+ url,
+                    zipkin.create_span('command_reciever.url='+ url,
                                         trace_id = trace_id,
                                         parent_span_id = parent_span_id,
                                       )
-                    
-                rtn, comment = ExecuterCaller.instance().execute_command(result_dict)
+
+                callback = None
+                if configure.get('COMMANDER_MESSAGE_CONVERTER'):
+                    function_path = configure.get('COMMANDER_MESSAGE_CONVERTER')
+                    callback = get_callable_object(function_path)
+
+                rtn, comment = ExecuterCaller.instance().execute_command(result_dict, callback)
 
                 if zipkin:
                     zipkin.update_tags(

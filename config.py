@@ -6,6 +6,7 @@ AGENT_NAME = 'BLUE_SKULL_NO13'
 ZIPKIN_ADDRESS = ('localhost',9411)
 
 COMMANDER_SERVER_URL = 'http://localhost:8809'
+COMMANDER_MESSAGE_CONVERTER = "example.etc.command_converter"
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
@@ -33,10 +34,19 @@ DEFAULT_ADAPTEES =\
     "example.adapter.payment_adapters.PaymentAdapter":
     "example.adaptee.tadaptees.CreditCardPaymentAdaptee",
 }
-"""
 
 SCHEDULED_JOBS =\
 [
+    {
+        "executer":"example.executer.scheduler.DeviceHealth2Kafka",
+        "trigger":"interval",
+        "id":"DeviceHealth2",
+        "name":"Devices Health Check2",
+        "minutes":20,
+        "start_date":datetime.now()+timedelta(minutes=1)
+    },
+]
+"""
     {
         "executer":"example.executer.scheduler.DeviceHealth",
         "trigger":"interval",
@@ -45,14 +55,4 @@ SCHEDULED_JOBS =\
         "minutes":20,
         "start_date":datetime.now()+timedelta(minutes=1)
     }
-]
-
-    {
-        "executer":"example.executer.scheduler.DeviceHealth2Kafka",
-        "trigger":"interval",
-        "id":"DeviceHealth2",
-        "name":"Devices Health Check2",
-        "minutes":30,
-        "start_date":datetime.now()+timedelta(minutes=1)
-    },
 """

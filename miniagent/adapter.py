@@ -1,14 +1,14 @@
 import abc
 from importlib import import_module
 from datetime import datetime
-from .common import split_class_path, get_class_object
+from .common import split_class_path, get_callable_object
 
 class AdapterFactory:
 
     @staticmethod
     def create_adapter(class_path: str):
 
-        class_obj = get_class_object(class_path)
+        class_obj = get_callable_object(class_path)
 
         if not issubclass(class_obj, Adapter):
             raise RuntimeError("Class [{}] must be a subclass of"
@@ -54,7 +54,7 @@ class Adapter(metaclass=abc.ABCMeta):
             self._adaptee = None
             return 1, "No Adaptee"
         
-        class_obj = get_class_object(class_path)
+        class_obj = get_callable_object(class_path)
 
         self._adaptee = class_obj()
         self.adaptee_name = class_path

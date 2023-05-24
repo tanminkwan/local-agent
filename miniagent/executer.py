@@ -2,9 +2,10 @@ import sys
 import inspect
 import types
 import abc
+from typing import Callable
 from importlib import import_module
 from typing import TypeVar
-from .common import SingletonInstane, get_class_object
+from .common import SingletonInstane, get_callable_object
 from .adapter import AdapterFactory
 
 class ExecuterInterface(metaclass=abc.ABCMeta):
@@ -29,7 +30,7 @@ class ExecuterFactory:
     @staticmethod
     def create_executer(class_path: str):
 
-        class_obj = get_class_object(class_path)
+        class_obj = get_callable_object(class_path)
 
         if not issubclass(class_obj, ExecuterInterface):
             raise RuntimeError("Class [{}] must be a subclass of"
@@ -56,7 +57,7 @@ class ExecuterCaller(SingletonInstane):
         else:    
             return padapter
 
-    def execute_command(self, message: dict) -> dict:
+    def execute_command(self, message: dict, message_converter: Callable[[dict], dict]=None) -> dict:
         """
         sample message :
         {
@@ -67,8 +68,11 @@ class ExecuterCaller(SingletonInstane):
             "executer":"addin.executer.purchase_card.PurchaseCard",
         }
         """
-        initial_params = message['initial_param'] if message.get('initial_param') else {}
-        executer_path = message['executer']
+        if message_converter==None:
+            initial_params = message['initial_param'] if message.get('initial_param') else {}
+            executer_path = message['executer']
+        else:
+            initial_params, executer_path = message_converter(message)
 
         executer = ExecuterFactory.create_executer(executer_path)
 

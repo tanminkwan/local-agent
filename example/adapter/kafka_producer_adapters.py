@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 import json
 from miniagent import configure
 from miniagent.adapter import Adapter
-from miniagent.common import SingletonInstane
+from miniagent.message_sender import TracingKafkaProducer
 
 
 class KafkaProducerAdapter(Adapter):
@@ -10,10 +10,10 @@ class KafkaProducerAdapter(Adapter):
     producer = None
 
     def __init__(self):
-        self.producer = KafkaProducer(bootstrap_servers=configure['KAFKA_BOOTSTRAP_SERVERS'])
+        self.producer = TracingKafkaProducer()
 
     def produce_message(self, topic: str, message: dict) -> tuple[int, dict]:
-        self.producer.send(topic,json.dumps(message).encode('utf-8'))
+        self.producer.send(topic,message)
         return 1, {'message':'OK'}
     
     def __del__(self):

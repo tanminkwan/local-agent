@@ -22,7 +22,7 @@ def jsonFile2Dict(jsonFile: str) -> tuple[int, dict]:
     
     return 1, data
 
-def get_class_object(class_path: str) -> object:
+def get_callable_object(class_path: str) -> object:
         
     package_name, class_name = split_class_path(class_path)
 
