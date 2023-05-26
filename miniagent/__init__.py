@@ -69,7 +69,6 @@ if not configure.get('SQLALCHEMY_DATABASE_URI'):
 app.config ['SQLALCHEMY_DATABASE_URI'] = configure['SQLALCHEMY_DATABASE_URI']
 
 db = SQLAlchemy(app)
-
 #Job Scheduler
 scheduler = APScheduler()
 scheduler.init_app(app)

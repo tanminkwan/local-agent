@@ -27,7 +27,7 @@ class ScheduledJob:
         with app.app_context():
 
             if zipkin:
-                zipkin.create_span('ScheduledJob.'+ id)
+                zipkin.create_span('scheduled_job.'+ id)
                 zipkin.update_tags(param=message)
 
             rtn, comment = self.caller.execute_command(message)

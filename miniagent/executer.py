@@ -70,7 +70,14 @@ class ExecuterCaller(SingletonInstane):
         """
         if message_converter==None:
             initial_params = message['initial_param'] if message.get('initial_param') else {}
+            
+            if not message.get('executer'):
+                raise RuntimeError("message must contain 'executer' item, which is not exists."
+                               " message : [{}]"\
+                            .format(str(message)))
+
             executer_path = message['executer']
+
         else:
             initial_params, executer_path = message_converter(message)
 
