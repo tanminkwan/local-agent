@@ -5,7 +5,7 @@ import abc
 from typing import Callable
 from importlib import import_module
 from typing import TypeVar
-from .common import SingletonInstane, get_callable_object
+from .common import SingletonInstane, get_callable_object, is_valid_return
 from .adapter import AdapterFactory
 
 class ExecuterInterface(metaclass=abc.ABCMeta):
@@ -104,6 +104,11 @@ class ExecuterCaller(SingletonInstane):
 
         #with app.app_context():
         #    rtn, message = executer.execute_command(initial_params, **adapters)
-        rtn, message = executer.execute_command(initial_params, **adapters)
+        rtn = executer.execute_command(initial_params, **adapters)
 
-        return rtn, message
+        if not is_valid_return(rtn):
+            raise RuntimeError("Return value of execute_command method must be tuple[int, dict].\n"
+                               " class : [{}] , return value : [{}]"\
+                        .format(executer_path, str(rtn)))            
+
+        return rtn

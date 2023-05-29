@@ -38,21 +38,21 @@ DEFAULT_ADAPTEES =\
 SCHEDULED_JOBS =\
 [
     {
-        "executer":"example.executer.scheduler.DeviceHealth2Kafka",
+        "executer":"example.executer.scheduler.DeviceHealth",
         "trigger":"interval",
-        "id":"DeviceHealth2",
-        "name":"Devices Health Check2",
-        "minutes":20,
+        "id":"DeviceHealth",
+        "name":"Devices Health Check",
+        "minutes":2,
         "start_date":datetime.now()+timedelta(minutes=1)
     },
 ]
 """
     {
-        "executer":"example.executer.scheduler.DeviceHealth",
+        "executer":"example.executer.scheduler.DeviceHealth2Kafka",
         "trigger":"interval",
-        "id":"DeviceHealth",
-        "name":"Devices Health Check",
-        "minutes":20,
+        "id":"DeviceHealth2",
+        "name":"Devices Health Check2",
+        "minutes":2,
         "start_date":datetime.now()+timedelta(minutes=1)
-    }
+    },
 """

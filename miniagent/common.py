@@ -2,6 +2,17 @@ import json
 import sys
 import os
 from importlib import import_module
+from typing import Any
+
+def is_valid_return(rtn:Any)-> bool:
+    
+    if isinstance(rtn, tuple) \
+        and len(rtn)==2 \
+        and isinstance(rtn[0], int) \
+        and isinstance(rtn[1], dict):
+       return True
+    else:
+       return False
 
 def split_class_path(class_path: str) -> tuple[str, str]:
 
