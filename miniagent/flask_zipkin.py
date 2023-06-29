@@ -287,7 +287,7 @@ def child_span(f):
             service_name=flask.current_app.name,
             span_name=f.__name__,
         )
-        kwargs['span'] = span
+        #kwargs['span'] = span
         with span:
             val = f(*args, **kwargs)
             span.update_binary_annotations({
@@ -307,6 +307,7 @@ class child_zipkin_span(zipkin_span):
         if zipkin._disable:
             return
 
+        """
         zipkin_attrs =  ZipkinAttrs(
                         trace_id      =zipkin.get_zipkin_attrs().trace_id,
                         span_id       =generate_random_64bit_string(),
@@ -316,25 +317,28 @@ class child_zipkin_span(zipkin_span):
                         #is_sampled    =zipkin.get_zipkin_attrs().is_sampled,
                         is_sampled=True,
                     )
-
+        """
         kwargs = dict(
             service_name     =zipkin.app.name,
             span_name        =span_name,
-            transport_handler=zipkin._transport_handler,
+            #transport_handler=zipkin._transport_handler,
             #transport_handler=SimpleHTTPTransport('localhost', 9411),
             #encoding=Encoding.V2_JSON,
-            zipkin_attrs     =zipkin_attrs,
+            #zipkin_attrs     =zipkin_attrs,
         )
 
         super().__init__(**kwargs)
 
     def update_tags(self, **kwargs):
 
+        """
         if self.logging_context:
             self.logging_context.tags.update(kwargs)
         else:
             tmp = dict(kwargs)
             self.update_binary_annotations(tmp)
+        """
+        self.update_binary_annotations(dict(kwargs))
 
     def create_http_headers_for_new_span(self):
         return zipkin.create_http_headers_for_new_span(

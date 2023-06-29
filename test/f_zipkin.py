@@ -287,17 +287,25 @@ class Zipkin(object):
 
 def child_span(f):
     def decorated(*args, **kwargs):
+        print("Deco!!!")
         span = hennry_zipkin_span(
-            service_name=flask.current_app.name,
+#            service_name=flask.current_app.name,
+            service_name='BBB',
             span_name=f.__name__,
         )
-        kwargs['span'] = span
+        #kwargs['span'] = span
         with span:
             val = f(*args, **kwargs)
-            span.update_binary_annotations({
-                'function_args': args,
-                'function_returns': val,
-            })
+            if span.logging_context:
+                span.logging_context.tags.update({
+                    'function_args': args,
+                    'function_returns': val,
+                })
+            else:
+                span.update_binary_annotations({
+                    'function_args': args,
+                    'function_returns': val,
+                })
             return val
 
     return decorated
@@ -324,9 +332,9 @@ class child_zipkin_span(zipkin_span):
             #service_name     =zipkin.app.name,
             span_name        =span_name,
             #transport_handler=zipkin._transport_handler,
-            transport_handler=SimpleHTTPTransport('localhost', 9411),
+            #transport_handler=SimpleHTTPTransport('localhost', 9411),
             #encoding=Encoding.V2_JSON,
-            zipkin_attrs     =zipkin_attrs,
+            #zipkin_attrs     =zipkin_attrs,
         )
 
         super().__init__(**kwargs)
