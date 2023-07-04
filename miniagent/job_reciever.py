@@ -13,6 +13,13 @@ class ScheduledJob:
     def _run_job(self, job: dict) -> int:
 
         executer = job.pop('executer')
+
+        from . import app_name
+        if job.get('agents'):
+            agents = job.pop('agents')
+            if app_name not in agents:
+                return 0
+
         scheduler.add_job(
             #func=self.caller.execute_command,
             func=self._call_execute_command,

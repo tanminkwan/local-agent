@@ -14,7 +14,7 @@ def _set_header(span:child_zipkin_span, kwargs: dict):
     header = {
         'x-b3-parentspanid':span.zipkin_attrs.parent_span_id,
         'x-b3-traceid':span.zipkin_attrs.trace_id,
-        'x-b3-spanid':span.zipkin_attrs.parent_span_id,
+        'x-b3-spanid':span.zipkin_attrs.span_id,
         'x-b3-sampled':bool2str(span.zipkin_attrs.is_sampled),
         'x-b3-flags':bool2str(span.zipkin_attrs.flags),
     }

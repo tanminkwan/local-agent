@@ -199,7 +199,7 @@ class Zipkin(object):
 
         safe_headers = self._safe_headers(request.headers)
 
-        parent_span_id = safe_headers.get('x-b3-parentspanid')
+        parent_span_id = safe_headers.get('x-b3-spanid')
         trace_id = safe_headers.get('x-b3-traceid') or self._gen_random_id()
 
         is_sampled = str(safe_headers.get('x-b3-sampled') or '0') == '1'
