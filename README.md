@@ -30,83 +30,56 @@ Now install miniagent on the virtual env, it will install all the dependencies a
 (venv)$ pip install miniagent
 ```
 
-## Example code download
+## Sample code download
 
-Create an example project after installing miniagent
+Create an sample project after installing miniagent
 
-`$ mini-project tanminkwan/local-agent test_project`
+`$ mini-project tanminkwan/banking-poc /`
 
-Then test_project directory and files are created like the tree below.
+Then the source files are downloaded from Github on the current directory. The following is the directory tree.
 ```
-└── test_project
-    ├── run.py
-    ├── config.py
-    └── myapp
-        ├── __init__.py
-        ├── adaptee.py
-        ├── adapter.py
-        ├── dbquery.py
-        ├── executer.py
-        └── model
-            ├── __init__.py
-            └── mymodels.py
+├── banking  
+│   ├── __init__.py  
+│   ├── api  
+│   │   ├── __init__.py  
+│   │   ├── bapis.py  
+│   ├── dbquery  
+│   │   └── queries.py  
+│   ├── executer  
+│   │   ├── __init__.py  
+│   │   ├── deposit.py  
+│   │   ├── event.py  
+│   │   └── raffle.py  
+│   └── model  
+│       ├── __init__.py  
+│       └── models.py  
+├── app.py  
+├── config.py  
+├── bonnie.py  
+├── clyde.py  
+├── deposit.py  
+├── event.py  
+└── raffle.py
 ```
+## Run Kafka and Zipkin services
 
-## A Simple Example
-
-There must be two files config.py and run.py in the base directory.
+Run Kafka and Zipkin and register the endpoints of them in config.py.
 ```
-# this is a sample config.py
-import os
-from datetime import datetime, timedelta
+ZIPKIN_DOMAIN_NAME = 'localhost'
+ZIPKIN_PORT =  '9411'
+KAFKA_BOOTSTRAP_SERVERS = 'localhost:9092'
 
-AGENT_NAME = 'BLUE_SKULL_NO13'
-
-ZIPKIN_ADDRESS = ('localhost',9411)
-
-COMMANDER_SERVER_URL = 'http://localhost:8809'
-
-base_dir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
-
-CUSTOM_MODELS_PATH = "myapp.model"
-
-KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
-
-EXECUTERS_BY_TOPIC =\
-{
-    "TEST_TOPIC":
-    "example.executer.say_hello.PrintParam",
-    "TEST2_TOPIC":
-    "example.executer.say_hello.PrintParam",
-}
-
-DEFAULT_ADAPTEES =\
-{
-    "myapp.adapter.printer_adapters.PrinterAdapter":
-    "myapp.adaptee.tadaptees.CardPrinterAdaptee",
-    "myapp.adapter.payment_adapters.PaymentAdapter":
-    "myapp.adaptee.tadaptees.CreditCardPaymentAdaptee",
-}
-SCHEDULED_JOBS =\
-[
-    {
-        "executer":"myapp.executer.scheduler.DeviceHealth",
-        "trigger":"interval",
-        "id":"DeviceHealth",
-        "name":"Devices Health Check",
-        "minutes":5,
-        "start_date":datetime.now()+timedelta(minutes=1)
-    }
-]
 ```
-```
-# save this as run.py
-from miniagent import app
+## Run the five applications
 
-app.run(host="0.0.0.0", port=17080, use_reloader=False, debug=True)
+Run the five applications as below.
 ```
+$ nohup python raffle.py &
+$ nohup python deposit.py &
+$ nohup python event.py &
+$ nohup python clyde.py &
+$ nohup python bonnie.py &
 ```
-$ python run.py
-  * Running on http://127.0.0.1:17080/ (Press CTRL+C to quit)
-```
+## Open Zipkin web site and check the transactions
+
+Clyde and Bonnie send requests to Deposit and Event every 2 minites. Deposit produces messages and Raffle consumes the messages via Kafka. Event calls Raffle whenever it receive a request from Clyde and Bonnie. You can see all of them on the Zipkin dashboard(Maybe http://localhost:9411)

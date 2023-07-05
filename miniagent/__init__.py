@@ -56,8 +56,8 @@ CORS(app)
 # zipkin
 zipkin = None
 if configure.get('ZIPKIN_ADDRESS'):
-    zipkin = Zipkin(app, sample_rate=100)
     app.config['ZIPKIN_ADDRESS']=configure['ZIPKIN_ADDRESS']
+    zipkin = Zipkin(app, sample_rate=100)
 
 #REST API
 api = Api(app, prefix="/api/v1")
