@@ -1,26 +1,27 @@
-import threading
 from kafka import KafkaConsumer
 from kafka.errors import NoBrokersAvailable
 import json
-import ast
+import logging
+import threading
 from time import sleep
+
 from .executer import ExecuterCaller
         
 class MessageReciever:
 
-    def __init__(self, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
+    def __init__(self, bootstrap_servers: list, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
 
         self.event = event
         self.consumer = None
         try:
             self.consumer = KafkaConsumer(
-                                bootstrap_servers=['localhost:9092'],
+                                bootstrap_servers=bootstrap_servers,
                                 auto_offset_reset='earliest',
                                 value_deserializer=lambda m: json.loads(m.decode('utf-8')),
                                 group_id=group_id,
                             )
         except NoBrokersAvailable as e:
-            print('Kafka NoBrokersAvailable!!')
+            logging.warning('No Kafka Brokers Available.')
             return
         
         self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
@@ -40,7 +41,7 @@ class MessageReciever:
         while True:
 
             if self.event.is_set():
-                print('[MessageReciever is broken]')
+                logging.warning('MessageReciever is broken.')
                 break
 
             try:

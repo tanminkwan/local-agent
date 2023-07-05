@@ -1,6 +1,7 @@
 import json
 import requests
 import threading
+import logging
 from time import sleep
 from polling2 import *
 from .executer import ExecuterCaller
@@ -31,12 +32,16 @@ class CommandsReciever:
                                 poll_forever=True,
                                 check_success=self._get_response)
             except requests.exceptions.ConnectionError as e:
+                logging.error("{} is not connected.".format(url))
                 sleep(10)
                 continue
-
             
-            print('result : ',type(result.text), result.text)
-            result_dict = json.loads(result.text)
+            try:
+                result_dict = json.loads(result.text)
+            except json.decoder.JSONDecodeError as e:
+                logging.error("The result is not JSON parsable. result.text\
+                               : {}".format(result.text))
+                continue
 
             from . import app, zipkin, configure
             with app.app_context():

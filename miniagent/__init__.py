@@ -18,7 +18,7 @@ from .event_reciever import Command
 from .message_reciever import MessageReciever
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.10'
+__version__ = '0.0.11'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -45,6 +45,11 @@ app_name = configure['AGENT_NAME'] \
     if configure.get('AGENT_NAME') else __name__
 app = Flask(app_name)
 
+#Set 500 error message
+@app.errorhandler(500)
+def error_handling_500(error):
+    return {'error': "Internal Server Error"}, 500
+
 #enable CORS for all routes 
 CORS(app)
 
@@ -70,6 +75,8 @@ app.config ['SQLALCHEMY_DATABASE_URI'] = configure['SQLALCHEMY_DATABASE_URI']
 
 db = SQLAlchemy(app)
 #Job Scheduler
+app.config ['SCHEDULER_TIMEZONE'] = configure.get('SCHEDULER_TIMEZONE') or 'Asia/Seoul'
+
 scheduler = APScheduler()
 scheduler.init_app(app)
 scheduler.start()
@@ -111,6 +118,7 @@ message_reciever = None
 if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVERS'):
     message_reciever = MessageReciever(
         group_id = configure['AGENT_NAME'],
+        bootstrap_servers = configure['KAFKA_BOOTSTRAP_SERVERS'],
         executers_by_topic = configure['EXECUTERS_BY_TOPIC'],
         event = stop_event
     )
