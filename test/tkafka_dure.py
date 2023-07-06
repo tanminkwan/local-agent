@@ -4,16 +4,15 @@ import json
 import logging
 import threading
 from time import sleep
-
-from .executer import ExecuterCaller
+import sys
         
 class MessageReciever:
 
-    def __init__(self, bootstrap_servers: list, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
+    def __init__(self, bootstrap_servers: list, group_id: str, topics: list, event: threading.Event) -> None:
 
         self.event = event
         self.bootstrap_servers = bootstrap_servers
-        self.group_id = group_id        
+        self.group_id = group_id
         self.consumer = None
         try:
             consumer = KafkaConsumer(
@@ -24,17 +23,17 @@ class MessageReciever:
                             )
             self.consumer = consumer
         except NoBrokersAvailable as e:
-            logging.warning('No Kafka Brokers Available.')
+            logging.warning('## No Kafka Brokers Available.')
             pass
+            #return
         
-        self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
-        self.executers = executers_by_topic
+        self.topics = topics
         #self.consumer.subscribe(self.topics)
         self._start_polling()
 
     def get_thread(self):
         return self.thread
-
+    
     def _get_consumer_handle(self):
         try:
             consumer = KafkaConsumer(
@@ -46,12 +45,6 @@ class MessageReciever:
         except NoBrokersAvailable as e:
             logging.warning('No Kafka Brokers Available.')
             return None
-        except ValueError as e:
-            logging.warning('ValueError : ' + e.__str__())
-            return None
-        
-        logging.info('KafkaConsumer is alive.')
-
         return consumer        
 
     def _polling(self):
@@ -71,6 +64,7 @@ class MessageReciever:
             try:
                 results = self.consumer.poll(10.0)
             except Exception as e:
+                print('Exception : ', e.__str__)
                 sleep(10)
                 continue
 
@@ -79,49 +73,13 @@ class MessageReciever:
             
             for topic_partition, messages in results.items():
                 for message in messages:
-                    result_dict = self.parse_message(topic_partition.topic, message.value)
-
-                    from . import app, zipkin
-                    with app.app_context():
-
-                        if zipkin:
-
-                            header = result_dict['header']
-                            trace_id = header.get('trace_id')
-                            parent_span_id = header.get('span_id')
-
-                            zipkin.create_span('Kafka_consumer.topic='+ topic_partition.topic,
-                                               trace_id = trace_id,
-                                               parent_span_id = parent_span_id,
-                                               )
-                            zipkin.update_tags(param=message.value)
-
-                        rtn, comment = ExecuterCaller.instance().execute_command(result_dict)
-
-                        if zipkin:
-                            zipkin.update_tags(
-                                param  = message.value,
-                                result = comment,
-                                )
+                    print(message.value)
 
     def _start_polling(self):
 
         self.thread = threading.Thread(target=self._polling)
         self.thread.name = '_kafka_consumer'
         self.thread.start()
-
-    def parse_message(self, topic: str, message: dict):
-        
-        header = message.pop('header') if message.get('header') else {}
-
-        result_dict =\
-            dict(
-                executer = self.executers[topic],
-                initial_param = message,
-                header = header
-            )
-        
-        return result_dict
     
     def __del__(self):
         #if self.consumer:
@@ -130,3 +88,19 @@ class MessageReciever:
             self.consumer.close()
         except Exception as e:
             pass
+
+if __name__ == '__main__':
+    stop_event = threading.Event()
+
+    def signal_handler(sig, frame):
+        global stop_event
+        stop_event.set()
+        sys.stderr.write("KeyboardInterrupt received, stopping...\n")
+        sys.exit(0)
+
+    MessageReciever(
+        group_id = 'raffle',
+        bootstrap_servers = ['localhost:9092'],
+        topics = ['deposit.raffle'],
+        event = stop_event
+    )

@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='miniagent',
-    version='0.0.12',
+    version='0.0.13',
     long_description = long_description,
     long_description_content_type='text/markdown',
     description='Multi-adaptable and lightweight server framework based on Flask',
