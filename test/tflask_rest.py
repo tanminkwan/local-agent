@@ -6,7 +6,7 @@ api = Api(app)
 
 @app.errorhandler(500)
 def error_handling_500(error):
-    return jsonify({'Error': "Some Error.."}, 500)
+    return jsonify({'error': "Internal Server Error"}, 500)
 
 class TodoSimple(Resource):
     def get(self, todo_id):
