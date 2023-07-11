@@ -1,4 +1,3 @@
-from .. import configure
 from ..adapter import Adapter
 from ..event_sender import get, post
 
