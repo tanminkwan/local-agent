@@ -26,6 +26,9 @@ class MessageReciever:
         except NoBrokersAvailable as e:
             logging.warning('No Kafka Brokers Available.')
             pass
+        except ValueError as e:
+            logging.warning('ValueError : ' + e.__str__())
+            pass
         
         self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
         self.executers = executers_by_topic
