@@ -13,12 +13,12 @@ from flask_sqlalchemy import SQLAlchemy
 #import logging.handlers
 from .app_config import AppConfig
 from .executer import ExecuterCaller
-from .command_reciever import CommandsReciever
-from .event_reciever import Command
-from .message_reciever import MessageReciever
+from .command_receiver import CommandsReceiver
+from .event_receiver import Command
+from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.14'
+__version__ = '0.0.15'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -96,10 +96,10 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-#Command Reciever (Web url polling)
-command_reciever = None
-if configure.get('COMMANDER_SERVER_URL'):
-    command_reciever = CommandsReciever(configure['COMMANDER_SERVER_URL'], stop_event)
+#Command Receiver (Web url polling)
+command_receiver = None
+if configure.get('COMMAND_RECEIVER_ENABLED') and configure.get('COMMANDER_SERVER_URL'):
+    command_receiver = CommandsReceiver(configure['COMMANDER_SERVER_URL'], stop_event)
 
 #Table creation
 # 1. miniagent tables
@@ -114,9 +114,9 @@ with app.app_context():
     db.create_all()
 
 #Kafka
-message_reciever = None
-if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVERS'):
-    message_reciever = MessageReciever(
+message_receiver = None
+if configure.get('MESSAGE_RECEIVER_ENABLED') and configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVERS'):
+    message_receiver = MessageReceiver(
         group_id = configure['AGENT_NAME'],
         bootstrap_servers = configure['KAFKA_BOOTSTRAP_SERVERS'],
         executers_by_topic = configure['EXECUTERS_BY_TOPIC'],
@@ -125,5 +125,5 @@ if configure.get('EXECUTERS_BY_TOPIC') and configure.get('KAFKA_BOOTSTRAP_SERVER
 
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):
-    from .job_reciever import ScheduledJob
+    from .job_receiver import ScheduledJob
     ScheduledJob(executer, configure['SCHEDULED_JOBS'])

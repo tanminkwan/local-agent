@@ -57,20 +57,22 @@ Then the source files are downloaded from Github on the current directory. The f
 ├── config.py  
 ├── bonnie.py  
 ├── clyde.py  
+├── john_dillinger.py  
 ├── deposit.py  
 ├── event.py  
 └── raffle.py
 ```
-## Run Kafka and Zipkin services
+## Run Kafka, Opensearch and Zipkin services
 
-Run Kafka and Zipkin and register the endpoints of them in config.py.
+Run Kafka, Opensearch and Zipkin and register the endpoints of them in config.py.
 ```
 ZIPKIN_DOMAIN_NAME = 'localhost'
 ZIPKIN_PORT =  '9411'
 KAFKA_BOOTSTRAP_SERVERS = 'localhost:9092'
-
+ELASTIC_SEARCH_DOMAIN_NAME = 'localhost'
+ELASTIC_SEARCH_PORT = '9200'
 ```
-## Run the five applications
+## Run the six applications
 
 Run the five applications as below.
 ```
@@ -79,7 +81,14 @@ $ nohup python deposit.py &
 $ nohup python event.py &
 $ nohup python clyde.py &
 $ nohup python bonnie.py &
+$ nohup python john_dillinger.py &
 ```
 ## Open Zipkin web site and check the transactions
 
-Clyde and Bonnie send requests to Deposit and Event every 2 minites. Deposit produces messages and Raffle consumes the messages via Kafka. Event calls Raffle whenever it receive a request from Clyde and Bonnie. You can see all of them on the Zipkin dashboard(Maybe http://localhost:9411)
+1. Clyde and Bonnie send requests to Deposit and Event every 2 minites. 
+2. Deposit produces messages and Raffle consumes the messages via Kafka. 
+3. Event calls Raffle whenever it receive a request from Clyde and Bonnie. 
+4. John Dillinger requests deposit amount by account from Event every 4 minutes. 
+5. Event retrieves this information from Opensearch and provides it to John Dillinger. 
+
+You can see all of them on the Zipkin dashboard.(Maybe http://localhost:9411)

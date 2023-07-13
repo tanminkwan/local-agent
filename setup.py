@@ -5,7 +5,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='miniagent',
-    version='0.0.13',
+    version='0.0.15',
     long_description = long_description,
     long_description_content_type='text/markdown',
     description='Multi-adaptable and lightweight server framework based on Flask',
@@ -60,5 +60,6 @@ setup(
         'Werkzeug>=2.3.2',
         'PyGithub>=1.58.1',
         'py-zipkin>=1.2.8',
+        'opensearch-py>=2.2.0',
     ]
 )

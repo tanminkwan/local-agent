@@ -6,8 +6,8 @@ import threading
 from time import sleep
 
 from .executer import ExecuterCaller
-        
-class MessageReciever:
+
+class MessageReceiver:
 
     def __init__(self, bootstrap_servers: list, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
 
@@ -68,7 +68,7 @@ class MessageReciever:
         while True:
 
             if self.event.is_set():
-                logging.warning('MessageReciever is broken.')
+                logging.warning('MessageReceiver is broken.')
                 break
 
             try:

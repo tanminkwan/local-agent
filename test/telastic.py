@@ -6,7 +6,7 @@ es = Elasticsearch("http://localhost:9200")
 resp = es.indices.get(index="*")
 print(resp)
 """
-from opensearchpy import OpenSearch
+from opensearchpy import OpenSearch, exceptions
 
 def parser(response):
     q = response.get('aggregations').get('deposit_account_grp').get('buckets')
@@ -75,10 +75,14 @@ query = \
   }
 }
 """
-response = client.search(
-    body = query,
-    index = "deposit.raffle"
-)
+try:
+  response = client.search(
+      body = query,
+      index = "deposit.raffle"
+  )
+except exceptions.NotFoundError as e:
+    print(e.__str__())
+
 print(parser(response))
 #print(response)
 

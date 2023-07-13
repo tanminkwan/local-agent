@@ -7,7 +7,7 @@ from polling2 import *
 from .executer import ExecuterCaller
 from .common import get_callable_object
 
-class CommandsReciever:
+class CommandsReceiver:
 
     def __init__(self, url: str, event: threading.Event) -> None:
         self.event = event
@@ -52,7 +52,7 @@ class CommandsReciever:
                     trace_id = header.get('x-b3-traceid')
                     parent_span_id = header.get('x-b3-spanid')
 
-                    zipkin.create_span('command_reciever.url='+ url,
+                    zipkin.create_span('command_receiver.url='+ url,
                                         trace_id = trace_id,
                                         parent_span_id = parent_span_id,
                                       )

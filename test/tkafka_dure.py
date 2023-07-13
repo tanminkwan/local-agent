@@ -6,7 +6,7 @@ import threading
 from time import sleep
 import sys
         
-class MessageReciever:
+class MessageReceiver:
 
     def __init__(self, bootstrap_servers: list, group_id: str, topics: list, event: threading.Event) -> None:
 
@@ -58,7 +58,7 @@ class MessageReciever:
         while True:
 
             if self.event.is_set():
-                logging.warning('MessageReciever is broken.')
+                logging.warning('MessageReceiver is broken.')
                 break
 
             try:
@@ -98,7 +98,7 @@ if __name__ == '__main__':
         sys.stderr.write("KeyboardInterrupt received, stopping...\n")
         sys.exit(0)
 
-    MessageReciever(
+    MessageReceiver(
         group_id = 'raffle',
         bootstrap_servers = ['localhost:9092'],
         topics = ['deposit.raffle'],
