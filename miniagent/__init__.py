@@ -18,7 +18,7 @@ from .event_receiver import Command
 from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.15'
+__version__ = '0.0.16'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
