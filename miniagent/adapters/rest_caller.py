@@ -3,10 +3,10 @@ from ..event_sender import get, post
 
 class RESTCaller(Adapter):
 
-    def call_get(self, url: str, params: dict = {}) -> tuple[int, dict]:
+    def call_get(self, url: str, params: dict = {}, headers: dict = {}) -> tuple[int, dict]:
 
         try:
-            response = get(url, params=params, timeout=10)
+            response = get(url, params=params, headers=headers, timeout=10)
             status = response.status_code
             result = response.json()
             
@@ -15,10 +15,10 @@ class RESTCaller(Adapter):
         
         return status, result
     
-    def call_post(self, url: str, json: dict) -> tuple[int, dict]:
+    def call_post(self, url: str, json: dict, headers: dict = {}) -> tuple[int, dict]:
 
         try:
-            response = post(url, json=json, timeout=10)
+            response = post(url, json=json, headers=headers, timeout=10)
             status = response.status_code
             result = response.json()
             
