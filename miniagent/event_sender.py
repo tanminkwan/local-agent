@@ -11,7 +11,7 @@ def _set_header(span:child_zipkin_span, kwargs: dict):
         else:
             return '0'
 
-    header = {
+    zipkin_header = {
         'x-b3-parentspanid':span.zipkin_attrs.parent_span_id,
         'x-b3-traceid':span.zipkin_attrs.trace_id,
         'x-b3-spanid':span.zipkin_attrs.span_id,
@@ -20,9 +20,10 @@ def _set_header(span:child_zipkin_span, kwargs: dict):
     }
 
     if kwargs.get('headers'):
-        headers = kwargs['headers'].update(header)
+        headers = kwargs['headers'].copy()
+        headers.update(zipkin_header)
     else:
-        headers = header
+        headers = zipkin_header
 
     kwargs.update({'headers':headers})
     return kwargs
