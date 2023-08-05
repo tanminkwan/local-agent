@@ -13,9 +13,8 @@ def scheduler_test():
 def scheduler_once():
     print('scheduler_once called')
 
-def kill_me():
-    p = [ j.id for j in scheduler.get_jobs() if j.id != 'kill_me']
-    print(p)
+def commit_suicide():
+    p = [ j.id for j in scheduler.get_jobs() if j.id != 'commit_suicide']
     if not p:
         os._exit(1)
 
