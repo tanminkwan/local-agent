@@ -35,6 +35,7 @@ DEFAULT_ADAPTEES =\
     "example.adaptee.tadaptees.CreditCardPaymentAdaptee",
 }
 
+EXIT_AFTER_JOBS = False
 SCHEDULED_JOBS =\
 [
     {

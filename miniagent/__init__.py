@@ -18,7 +18,7 @@ from .event_receiver import Command
 from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.17'
+__version__ = '0.0.18'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -126,4 +126,8 @@ if configure.get('MESSAGE_RECEIVER_ENABLED') and configure.get('EXECUTERS_BY_TOP
 #Start scheduled jobs
 if configure.get('SCHEDULED_JOBS'):
     from .job_receiver import ScheduledJob
-    ScheduledJob(executer, configure['SCHEDULED_JOBS'])
+    exit_after_jobs = configure.get('EXIT_AFTER_JOBS') or False
+    ScheduledJob(executer, 
+                 jobs=configure['SCHEDULED_JOBS'], 
+                 exit_after_jobs=exit_after_jobs
+                 )

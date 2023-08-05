@@ -1,14 +1,28 @@
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.job import Job
 import threading
 import time
+from datetime import datetime, timedelta
+import os
 
 scheduler = BackgroundScheduler()
 
 def scheduler_test():
     print('scheduler_test called')
 
+def scheduler_once():
+    print('scheduler_once called')
+
+def kill_me():
+    p = [ j.id for j in scheduler.get_jobs() if j.id != 'kill_me']
+    print(p)
+    if not p:
+        os._exit(1)
+
 def run_scheduler():
-    scheduler.add_job(func=scheduler_test, id='scheduler_test', trigger='interval', seconds=30)
+    scheduler.add_job(func=scheduler_once, id='scheduler_once', run_date = datetime.now() + timedelta(minutes=1))
+    #scheduler.add_job(func=scheduler_test, id='scheduler_test', trigger='interval', seconds=30)
+    scheduler.add_job(func=kill_me, id='kill_me', trigger='interval', seconds=10)
     scheduler.start()
 
 if __name__ == '__main__':

@@ -1,14 +1,19 @@
 from datetime import datetime, timedelta
 from . import scheduler
 from .executer import ExecuterCaller
+import os
+import logging
 
 class ScheduledJob:
 
-    def __init__(self, caller: ExecuterCaller, jobs: list) -> None:
+    def __init__(self, caller: ExecuterCaller, jobs: list, exit_after_jobs: bool=False) -> None:
 
         self.caller = caller
         for job in jobs:
             self._run_job(job)
+
+        if exit_after_jobs:
+            self._trigger_suicide_bomber()
 
     def _run_job(self, job: dict) -> int:
 
@@ -21,11 +26,13 @@ class ScheduledJob:
                 return 0
 
         scheduler.add_job(
-            #func=self.caller.execute_command,
             func=self._call_execute_command,
             args=[job['id'], {'executer':executer}],
             **job
-        )        
+        )
+
+        logging.info("A job is added. job_id : "+ job['id'])
+
         return 1
     
     def _call_execute_command(self, id: str, message: dict):
@@ -43,4 +50,22 @@ class ScheduledJob:
                 zipkin.update_tags(
                     param  = message,
                     result = comment,
-                )         
+                )
+
+    def _trigger_suicide_bomber(self):
+                
+        scheduler.add_job(
+            id='commit_suicide',
+            func=self._commit_suicide,
+            trigger='interval', 
+            seconds=10
+        )
+
+        logging.info("Suicide job is started. job_id : commit_suicide")
+
+    def _commit_suicide(self):
+
+        p = [ j.id for j in scheduler.get_jobs() if j.id != 'commit_suicide']
+        if not p:
+            logging.info("Program is killed by commit_suicide job.")
+            os._exit(1)
