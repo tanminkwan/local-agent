@@ -74,8 +74,11 @@ if not configure.get('SQLALCHEMY_DATABASE_URI'):
 app.config ['SQLALCHEMY_DATABASE_URI'] = configure['SQLALCHEMY_DATABASE_URI']
 
 db = SQLAlchemy(app)
+
 #Job Scheduler
 app.config ['SCHEDULER_TIMEZONE'] = configure.get('SCHEDULER_TIMEZONE') or 'Asia/Seoul'
+app.config ['SCHEDULER_API_ENABLED'] = configure.get('SCHEDULER_API_ENABLED') or False
+app.config ['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 scheduler = APScheduler()
 scheduler.init_app(app)
