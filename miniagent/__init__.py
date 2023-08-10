@@ -18,7 +18,7 @@ from .event_receiver import Command
 from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.18'
+__version__ = '0.0.19'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -44,6 +44,12 @@ logging.basicConfig(handlers=[fileHandler])
 app_name = configure['AGENT_NAME'] \
     if configure.get('AGENT_NAME') else __name__
 app = Flask(app_name)
+
+if configure.get('AGENT_ROLES'):
+    if isinstance(configure.get('AGENT_ROLES'),str):
+        configure['AGENT_ROLES'] = configure['AGENT_ROLES'].split(",")
+else:
+    configure['AGENT_ROLES'] = []
 
 #Set 500 error message
 @app.errorhandler(500)
@@ -95,7 +101,7 @@ def signal_handler(sig, frame):
     stop_event.set()
     sys.stderr.write("KeyboardInterrupt received, stopping...\n")
     sleep(5)
-    sys.exit(0)
+    os._exit(1)
 
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -123,6 +129,7 @@ if configure.get('MESSAGE_RECEIVER_ENABLED') and configure.get('EXECUTERS_BY_TOP
         group_id = configure['AGENT_NAME'],
         bootstrap_servers = configure['KAFKA_BOOTSTRAP_SERVERS'],
         executers_by_topic = configure['EXECUTERS_BY_TOPIC'],
+        agent_roles = configure['AGENT_ROLES'],
         event = stop_event
     )
 

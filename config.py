@@ -17,13 +17,14 @@ CUSTOM_APIS_PATH = "example.api"
 
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
 
+AGENT_ROLES = ","
+
 EXECUTERS_BY_TOPIC =\
-{
-    "TEST_TOPIC":
-    "example.executer.say_hello.PrintParam",
-    "TEST2_TOPIC":
-    "example.executer.say_hello.PrintParam",
-}
+[
+    {"topic":"TEST_TOPIC",
+    "executer":"example.executer.say_hello.PrintParam",
+     "agent_roles":["tester","admin"]},
+]
 
 DEFAULT_ADAPTEES =\
 {
@@ -44,7 +45,8 @@ SCHEDULED_JOBS =\
         "id":"DeviceHealth",
         "name":"Devices Health Check",
         "minutes":2,
-        "start_date":datetime.now()+timedelta(minutes=1)
+        "start_date":datetime.now()+timedelta(minutes=1),
+        "agent_roles":["tester","admin"]
     },
 ]
 """

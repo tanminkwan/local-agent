@@ -4,6 +4,16 @@ import os
 from importlib import import_module
 from typing import Any
 
+def intersect(list_1st:list, list_2nd:list):
+
+    if not isinstance(list_1st, list):
+       list_1st = [list_1st]
+
+    if not isinstance(list_2nd, list):
+       list_2nd = [list_2nd]
+
+    return list(set(list_1st) & set(list_2nd))
+
 def is_valid_return(rtn:Any)-> bool:
     
     if isinstance(rtn, tuple) \

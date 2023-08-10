@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from . import scheduler
 from .executer import ExecuterCaller
+from .common import intersect
 import os
 import logging
 
@@ -19,10 +20,15 @@ class ScheduledJob:
 
         executer = job.pop('executer')
 
-        from . import app_name
+        from . import app_name, configure
         if job.get('agents'):
             agents = job.pop('agents')
             if app_name not in agents:
+                return 0
+
+        if job.get('agent_roles'):
+            roles = job.pop('agent_roles')
+            if not intersect(configure['AGENT_ROLES'], roles):
                 return 0
 
         scheduler.add_job(
@@ -31,7 +37,7 @@ class ScheduledJob:
             **job
         )
 
-        logging.info("A job is added. job_id : "+ job['id'])
+        logging.info("Job is added. job_id : "+ job['id'])
 
         return 1
     

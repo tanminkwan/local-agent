@@ -46,3 +46,8 @@ def put(url, data=None, json=None, **kwargs):
         span.update_tags(data=data, json=json)
         return requests.put(url, data=data, json=json, **_set_header(span, kwargs))
 
+def delete(url, params=None, **kwargs):
+
+    with child_zipkin_span('reqeust_delete.url='+url) as span:
+        span.update_tags(params=params)
+        return requests.delete(url, params=params, **_set_header(span, kwargs))

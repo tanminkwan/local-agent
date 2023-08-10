@@ -6,14 +6,20 @@ import threading
 from time import sleep
 
 from .executer import ExecuterCaller
+from .common import intersect
 
 class MessageReceiver:
 
-    def __init__(self, bootstrap_servers: list, group_id: str, executers_by_topic: dict, event: threading.Event) -> None:
+    def __init__(self, 
+                 bootstrap_servers: list, 
+                 group_id: str, 
+                 executers_by_topic: list, 
+                 agent_roles: list,
+                 event: threading.Event) -> None:
 
         self.event = event
         self.bootstrap_servers = bootstrap_servers
-        self.group_id = group_id        
+        self.group_id = group_id
         self.consumer = None
         try:
             consumer = KafkaConsumer(
@@ -30,14 +36,32 @@ class MessageReceiver:
             logging.warning('ValueError : ' + e.__str__())
             pass
         
-        self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
-        self.executers = executers_by_topic
+        self.topics, self.executers = \
+            self._parse_config(executers_by_topic, agent_roles)
+        #self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
+        #self.executers = executers_by_topic
         #self.consumer.subscribe(self.topics)
         self._start_polling()
 
     def get_thread(self):
         return self.thread
 
+    def _parse_config(self, executers_by_topic:list, agent_roles:list):
+
+        topics = []
+        executers = {}
+
+        for t in executers_by_topic:
+
+            if t.get('agent_roles') \
+                and not intersect(agent_roles, t.get('agent_roles')):
+                continue
+
+            topics.append(t['topic'])
+            executers[t['topic']] = t['executer']
+        
+        return topics, executers
+    
     def _get_consumer_handle(self):
         try:
             consumer = KafkaConsumer(

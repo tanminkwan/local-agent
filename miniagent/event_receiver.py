@@ -1,7 +1,32 @@
-from flask import jsonify
 from flask_api import status
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, abort, wraps
 from .executer import ExecuterCaller
+from .common import intersect
+
+def _check_roles(func):
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+
+        from . import configure
+
+        if not getattr(func, 'permitted_roles', False):
+            
+            return func(*args, **kwargs)
+
+        permitted_roles = getattr(func, 'permitted_roles')
+
+        roles = intersect(permitted_roles, configure['AGENT_ROLES'])
+
+        if roles:
+            return func(*args, **kwargs)
+
+        abort(406) #Not Acceptable
+
+    return wrapper
+
+class Resource(Resource):
+    method_decorators = [_check_roles]   # applies to all inherited resources
 
 class Command(Resource):
 
