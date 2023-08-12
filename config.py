@@ -6,7 +6,7 @@ AGENT_NAME = 'BLUE_SKULL_NO13'
 ZIPKIN_ADDRESS = ('localhost',9411)
 
 COMMANDER_SERVER_URL = 'http://localhost:8809'
-COMMANDER_MESSAGE_CONVERTER = "example.etc.command_converter"
+COMMANDER_RESPONSE_CONVERTER = "example.etc.command_converter"
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(base_dir, 'app.db')
@@ -17,7 +17,7 @@ CUSTOM_APIS_PATH = "example.api"
 
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
 
-AGENT_ROLES = ","
+AGENT_ROLES = "customer,tester"
 
 EXECUTERS_BY_TOPIC =\
 [

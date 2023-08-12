@@ -58,8 +58,8 @@ class CommandsReceiver:
                                       )
 
                 callback = None
-                if configure.get('COMMANDER_MESSAGE_CONVERTER'):
-                    function_path = configure.get('COMMANDER_MESSAGE_CONVERTER')
+                if configure.get('COMMANDER_RESPONSE_CONVERTER'):
+                    function_path = configure.get('COMMANDER_RESPONSE_CONVERTER')
                     callback = get_callable_object(function_path)
 
                 rtn, comment = ExecuterCaller.instance().execute_command(result_dict, callback)
