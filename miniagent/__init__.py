@@ -13,6 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 #import logging.handlers
 from .app_config import AppConfig
 from .executer import ExecuterCaller
+from .prework import Prework
 from .command_receiver import CommandsReceiver
 from .event_receiver import Command
 from .message_receiver import MessageReceiver
@@ -105,11 +106,6 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-#Command Receiver (Web url polling)
-command_receiver = None
-if configure.get('COMMAND_RECEIVER_ENABLED') and configure.get('COMMANDER_SERVER_URL'):
-    command_receiver = CommandsReceiver(configure['COMMANDER_SERVER_URL'], stop_event)
-
 #Table creation
 # 1. miniagent tables
 from . import models
@@ -121,6 +117,18 @@ if configure.get('CUSTOM_MODELS_PATH'):
 
 with app.app_context():
     db.create_all()
+
+#Prework
+if configure.get('PREWORK'):
+    Prework(executer, 
+            preworks = configure['PREWORK'], 
+            agent_roles = configure['AGENT_ROLES'],
+            )
+
+#Command Receiver (Web url polling)
+command_receiver = None
+if configure.get('COMMAND_RECEIVER_ENABLED') and configure.get('COMMANDER_SERVER_URL'):
+    command_receiver = CommandsReceiver(configure['COMMANDER_SERVER_URL'], stop_event)
 
 #Kafka
 message_receiver = None
