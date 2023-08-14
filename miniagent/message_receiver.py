@@ -21,6 +21,14 @@ class MessageReceiver:
         self.bootstrap_servers = bootstrap_servers
         self.group_id = group_id
         self.consumer = None
+
+        self.topics, self.executers = \
+            self._parse_config(executers_by_topic, agent_roles)
+
+        if not self.topics:
+            logging.warning('There is no topic to consume.')
+            return
+
         try:
             consumer = KafkaConsumer(
                                 bootstrap_servers=bootstrap_servers,
@@ -36,11 +44,10 @@ class MessageReceiver:
             logging.warning('ValueError : ' + e.__str__())
             pass
         
-        self.topics, self.executers = \
-            self._parse_config(executers_by_topic, agent_roles)
         #self.topics = list(map(lambda x: x[0], executers_by_topic.items()))
         #self.executers = executers_by_topic
         #self.consumer.subscribe(self.topics)
+
         self._start_polling()
 
     def get_thread(self):

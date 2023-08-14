@@ -31,9 +31,14 @@ class ScheduledJob:
             if not intersect(configure['AGENT_ROLES'], roles):
                 return 0
 
+        param = {'executer':executer}
+        if job.get('params'):
+            params = job.pop('params')
+            param.update({'initial_param':params})    
+        
         scheduler.add_job(
             func=self._call_execute_command,
-            args=[job['id'], {'executer':executer}],
+            args=[job['id'], param],
             **job
         )
 
