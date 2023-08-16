@@ -20,10 +20,10 @@ class ScheduledJob:
 
         executer = job.pop('executer')
 
-        from . import app_name, configure
+        from . import configure
         if job.get('agents'):
             agents = job.pop('agents')
-            if app_name not in agents:
+            if configure['AGENT_NAME'] not in agents:
                 return 0
 
         if job.get('agent_roles'):

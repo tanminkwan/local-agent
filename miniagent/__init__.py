@@ -44,6 +44,7 @@ logging.basicConfig(handlers=[fileHandler])
 #Get flask handle
 app_name = configure['AGENT_NAME'] \
     if configure.get('AGENT_NAME') else __name__
+app_name = app_name.replace('.','__')
 app = Flask(app_name)
 
 if configure.get('AGENT_ROLES'):
