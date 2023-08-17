@@ -8,8 +8,11 @@ class RESTCaller(Adapter):
         try:
             response = get(url, params=params, headers=headers, timeout=10)
             status = response.status_code
-            result = response.json()
-            
+            if status == 204:
+                result = {"message":"No content"}
+            else:
+                result = response.json()
+
         except ConnectionError as e:
             return -1, {"message":"ConnectionError to {}".format(url)}
         
@@ -20,7 +23,11 @@ class RESTCaller(Adapter):
         try:
             response = post(url, json=json, headers=headers, timeout=10)
             status = response.status_code
-            result = response.json()
+            
+            if status == 204:
+                result = {"message":"No content"}
+            else:
+                result = response.json()
             
         except ConnectionError as e:
             return -1, {"message":"ConnectionError to {}".format(url)}

@@ -37,7 +37,7 @@ class OpensearchCaller(Adapter):
                                 index = index
                             )
             except exceptions.NotFoundError as e:
-                return -1, {"message":"NotFoundError : {}".format(e.__str__())}
+                return 0, {"message":"NotFoundError : {}".format(e.__str__())}
 
             result = response.copy()
 
