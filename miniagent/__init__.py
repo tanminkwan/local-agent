@@ -143,10 +143,11 @@ if configure.get('MESSAGE_RECEIVER_ENABLED') and configure.get('EXECUTERS_BY_TOP
     )
 
 #Start scheduled jobs
+scheduled_job = None
 if configure.get('SCHEDULED_JOBS'):
     from .job_receiver import ScheduledJob
     exit_after_jobs = configure.get('EXIT_AFTER_JOBS') or False
-    ScheduledJob(executer, 
-                 jobs=configure['SCHEDULED_JOBS'], 
-                 exit_after_jobs=exit_after_jobs
-                 )
+    scheduled_job = ScheduledJob(executer, 
+                    jobs=configure['SCHEDULED_JOBS'], 
+                    exit_after_jobs=exit_after_jobs
+                    )

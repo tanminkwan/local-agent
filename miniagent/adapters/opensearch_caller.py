@@ -41,14 +41,15 @@ class OpensearchCaller(Adapter):
 
             result = response.copy()
 
+            rtn = 1
             if parser:
-                result = parser(result)
+                rtn, result = parser(result)
 
             span.update_tags(
                 result=result
             )
 
-        return 1, result
+        return rtn, result
 
     def __del__(self):
         try:

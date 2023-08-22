@@ -1,5 +1,6 @@
 from .executer import ExecuterCaller
 from .common import intersect
+import os
 
 class Prework:
 
@@ -23,6 +24,8 @@ class Prework:
     def _do_prework(self, prework: dict):
         
         from . import app, zipkin
+        rtn = 0
+
         with app.app_context():
 
             if zipkin:
@@ -37,4 +40,7 @@ class Prework:
                     param  = prework,
                     result = results,
                 )
+
+        if rtn < 0:
+            os._exit(1)
 
