@@ -124,9 +124,16 @@ class MessageReceiver:
                             trace_id = header.get('trace_id')
                             parent_span_id = header.get('span_id')
 
+                            if header.get('is_sampled') and (header['is_sampled'] in ['1', 'True']\
+                                  or header['is_sampled']==True):
+                                is_sampled = True
+                            else:
+                                is_sampled = False
+
                             zipkin.create_span('Kafka_consumer.topic='+ topic_partition.topic,
                                                trace_id = trace_id,
                                                parent_span_id = parent_span_id,
+                                               is_sampled = is_sampled,
                                                )
                             zipkin.update_tags(param=message.value)
 

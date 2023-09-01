@@ -159,7 +159,7 @@ class Zipkin(object):
         self._headers = dict((k.lower(), v) for k, v in headers.__iter__())
         return self._headers
 
-    def create_span(self, span_name, trace_id=None, parent_span_id=None, flags=None, is_sampled=True):
+    def create_span(self, span_name, trace_id=None, parent_span_id=None, flags=None, is_sampled=False):
 
         self._zipkin_attrs = zipkin.ZipkinAttrs(
             trace_id=trace_id if trace_id else self._gen_random_id(),
