@@ -52,9 +52,16 @@ class CommandsReceiver:
                     trace_id = header.get('x-b3-traceid')
                     parent_span_id = header.get('x-b3-spanid')
 
+                    if header.get('is_sampled') and (header['is_sampled'] in ['1', 'True']\
+                        or header['is_sampled']==True):
+                        is_sampled = True
+                    else:
+                        is_sampled = False
+
                     zipkin.create_span('command_receiver.url='+ url,
                                         trace_id = trace_id,
                                         parent_span_id = parent_span_id,
+                                        is_sampled = is_sampled,
                                       )
 
                 callback = None
