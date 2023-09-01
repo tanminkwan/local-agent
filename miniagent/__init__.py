@@ -19,7 +19,7 @@ from .event_receiver import Command
 from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.20'
+__version__ = '0.0.21'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -65,7 +65,8 @@ CORS(app)
 zipkin = None
 if configure.get('ZIPKIN_ADDRESS'):
     app.config['ZIPKIN_ADDRESS']=configure['ZIPKIN_ADDRESS']
-    zipkin = Zipkin(app, sample_rate=100)
+    sample_rate = configure['ZIPKIN_SAMPLE_RATE'] if configure.get('ZIPKIN_SAMPLE_RATE') else 100
+    zipkin = Zipkin(app, sample_rate=sample_rate)
 
 #REST API
 api = Api(app, prefix="/api/v1")
