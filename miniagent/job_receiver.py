@@ -83,4 +83,4 @@ class ScheduledJob:
         p = [ j.id for j in scheduler.get_jobs() if j.id != 'commit_suicide']
         if not p:
             logging.info("Program is killed by commit_suicide job.")
-            os._exit(1)
+            os._exit(0) # completed normally

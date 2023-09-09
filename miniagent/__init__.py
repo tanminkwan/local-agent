@@ -19,7 +19,7 @@ from .event_receiver import Command
 from .message_receiver import MessageReceiver
 from .flask_zipkin import Zipkin
 
-__version__ = '0.0.23'
+__version__ = '0.0.27'
 
 #Load configuration
 configure = AppConfig(os.getcwd())
@@ -85,7 +85,7 @@ app.config ['SQLALCHEMY_DATABASE_URI'] = configure['SQLALCHEMY_DATABASE_URI']
 db = SQLAlchemy(app)
 
 #Job Scheduler
-app.config ['SCHEDULER_TIMEZONE'] = configure.get('SCHEDULER_TIMEZONE') or 'Asia/Seoul'
+app.config ['SCHEDULER_TIMEZONE'] = configure.get('TIMEZONE') or 'Asia/Seoul'
 app.config ['SCHEDULER_API_ENABLED'] = configure.get('SCHEDULER_API_ENABLED') or False
 app.config ['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
@@ -145,7 +145,7 @@ if configure.get('MESSAGE_RECEIVER_ENABLED') and configure.get('EXECUTERS_BY_TOP
 
 #Start scheduled jobs
 scheduled_job = None
-if configure.get('SCHEDULED_JOBS'):
+if configure.get('SCHEDULED_JOBS')!=None:
     from .job_receiver import ScheduledJob
     exit_after_jobs = configure.get('EXIT_AFTER_JOBS') or False
     scheduled_job = ScheduledJob(executer, 

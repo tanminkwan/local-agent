@@ -1,5 +1,5 @@
 from .executer import ExecuterCaller
-from .common import intersect
+from .common import intersect, ExitType
 import os
 
 class Prework:
@@ -41,6 +41,7 @@ class Prework:
                     result = results,
                 )
 
-        if rtn < 0:
+        if rtn == ExitType.NORMAL_EXIT.value:
+            os._exit(0)
+        elif rtn == ExitType.ABNORMAL_EXIT.value:
             os._exit(1)
-

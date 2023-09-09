@@ -47,7 +47,7 @@ Configuration variables defined in the config.py file
 |SQLALCHEMY_DATABASE_URI|_str_|URI of dedicated database of the service|`"sqlite:///" + os.path.join(base_dir, "app.db")`|
 |CUSTOM_MODELS_PATH|_str_|Path of data models added by the application <p> **ex** : `CUSTOM_MODELS_PATH = "example.model"`
 |CUSTOM_APIS_PATH|_str_|Path of REST APIs added by the application <p> **ex** : `CUSTOM_APIS_PATH = "example.api"`
-|SCHEDULER_TIMEZONE|_str_|Timezone to be used in Job Scheduler <p> **ex** : `SCHEDULER_TIMEZONE = "Asia/Seoul"`|
+|TIMEZONE|_str_|Timezone to be used in miniagent <p> **ex** : `TIMEZONE = "Asia/Seoul"`|
 |SCHEDULER_API_ENABLED|_bool_|It indicates whether to open REST APIs of Job Scheduler or not.|False|
 |EXIT_AFTER_JOBS|_bool_|It indicates whether to terminate the service when all jobs scheduled in Job Scheduler are finished.|False|
 |SCHEDULED_JOBS|_list(dir)_|List of jobs to be scheduled in Job Scheduler|

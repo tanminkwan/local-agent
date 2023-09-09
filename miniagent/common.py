@@ -3,6 +3,39 @@ import sys
 import os
 from importlib import import_module
 from typing import Any
+from datetime import datetime
+from pytz import timezone, UnknownTimeZoneError
+from tzlocal import get_localzone
+from enum import Enum
+
+class ExitType(Enum):
+    NORMAL_EXIT = 0
+    ABNORMAL_EXIT = -1
+    STAY_RUNNING = 1
+
+def local_dt_str(iso_str:any):
+    from . import configure        
+    try:
+        if isinstance(iso_str, datetime):
+            dt = iso_str
+        else:
+            dt = datetime.fromisoformat(iso_str)
+        local_dt = timezone(configure.get('TIMEZONE')).localize(dt)
+        local_dt_str = local_dt.isoformat()        
+    except ValueError:
+        return iso_str
+    except UnknownTimeZoneError:
+        return iso_str
+
+    return local_dt_str
+
+def now():
+    from . import configure    
+    try:
+        now = datetime.now(timezone(configure.get('TIMEZONE')))
+    except UnknownTimeZoneError:
+        now = datetime.now(get_localzone())
+    return now
 
 def intersect(list_1st:list, list_2nd:list):
 
