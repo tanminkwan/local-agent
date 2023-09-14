@@ -35,6 +35,7 @@ class MessageReceiver:
                                 auto_offset_reset='earliest',
                                 value_deserializer=lambda m: json.loads(m.decode('utf-8')),
                                 group_id=group_id,
+                                max_poll_records=1,
                             )
             self.consumer = consumer
         except NoBrokersAvailable as e:
